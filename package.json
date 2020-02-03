@@ -1,0 +1,19 @@
+{
+  "name": "project_mhw",
+  "version": "0.0.1",
+  "description": "MHW API Projekt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tschaub1904/project_mhw.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tschaub1904/project_mhw/issues"
+  },
+  "homepage": "https://github.com/tschaub1904/project_mhw#readme"
+}
