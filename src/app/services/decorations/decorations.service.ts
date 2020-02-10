@@ -19,7 +19,6 @@ export class DecorationsService {
 
   }
   getAllDecoration(): Observable<Decoration[]> {
-    var temp = this.httpClient.get<Decoration[]>('https://mhw-db.com/decorations');
-    return temp;
+    return this.httpClient.get<Decoration[]>('https://mhw-db.com/decorations');
   }
 }
