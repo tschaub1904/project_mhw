@@ -1,10 +1,6 @@
-import { Attack } from 'src/app/models/weapons/weaponAttack';
+import { Attack, WeaponElement, WeaponSharpness, WeaponAttributes } from 'src/app/models/stats/weaponStats';
 import { Slot } from 'src/app/models/dataTypes/slot';
-import { WeaponElement } from 'src/app/models/weapons/weaponElement';
-import { WeaponCraftingInfo } from 'src/app/models/weapons/weaponCraftingInfo';
-import { WeaponAssets } from 'src/app/models/weapons/weaponAssets';
-import { WeaponSharpness } from 'src/app/models/weapons/weaponDurability';
-import { WeaponAttributes } from 'src/app/models/weapons/weaponAttributes';
+import { CraftingCost } from 'src/app/models/dataTypes/craftingCost';
 
 export interface Weapon {
     id: number,
@@ -21,4 +17,17 @@ export interface Weapon {
     elderseal: string,
     damageType: string,
     attribute: WeaponAttributes
+}
+
+export interface WeaponCraftingInfo{
+    craftable: boolean,
+    previous?: number,
+    branches: number[],
+    craftingMaterials: CraftingCost[],
+    upgradeMaterials: CraftingCost[]
+}
+
+export interface WeaponAssets{
+    icon: string,
+    image: string
 }
