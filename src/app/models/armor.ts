@@ -1,8 +1,7 @@
-import { SkillRank } from 'src/app/services/charms/charm.service';
-import { Slot } from '../dataTypes/slot';
-import { Skill } from 'src/app/services/monsters/monster.service';
-import { Defense, Resistances } from '../stats/armorStats';
-import { CraftingCost } from '../dataTypes/craftingCost';
+import { Skill, SkillRank } from 'src/app/models/skill';
+import { Slot } from './dataTypes/slot';
+import { Defense, Resistances } from './stats/armorStats';
+import { CraftingCost } from './dataTypes/craftingCost';
 
 export interface Armor {
   id: number,

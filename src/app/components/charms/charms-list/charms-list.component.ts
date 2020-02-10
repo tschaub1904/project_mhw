@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CharmService, Charm } from 'src/app/services/charms/charm.service';
+import { CharmService } from 'src/app/services/charm.service';
+import { Charm } from 'src/app/models/charm';
 
 @Component({
   selector: 'app-charms-list',
@@ -15,5 +16,4 @@ export class CharmsListComponent implements OnInit {
       this.charms = charms;
     })
   }
-
 }

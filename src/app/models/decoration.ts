@@ -1,4 +1,4 @@
-import { SkillRank } from '../services/charms/charm.service';
+import { SkillRank } from '../models/skill';
 
 export interface Decoration {
     id: number,

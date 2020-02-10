@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DecorationsService } from './decorations.service';
+import { CharmService } from '../charm.service';
 
-describe('DecorationsService', () => {
+describe('CharmService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DecorationsService = TestBed.get(DecorationsService);
+    const service: CharmService = TestBed.get(CharmService);
     expect(service).toBeTruthy();
   });
 });
