@@ -1,4 +1,4 @@
-import { Injectable, ResolvedReflectiveFactory } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Item, SkillRank } from 'src/app/services/charms/charm.service'
@@ -78,10 +78,10 @@ export interface RewardCondition {
 export class MonsterService {
   constructor( private http: HttpClient) { }
 
-  getCharm(id: number): Observable<Monster> {
+  getMonster(id: number): Observable<Monster> {
     return this.http.get<Monster>('https://mhw-db.com/monsters/' + id)
   }
-  getAllCharm(): Observable<Monster[]> {
+  getAllMonsters(): Observable<Monster[]> {
     return this.http.get<Monster[]>('https://mhw-db.com/monsters');
   }
 }
