@@ -14,11 +14,11 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.weaponService.getAllWeapons().subscribe((data: Weapon[]) => {
-      console.log(data);
-    });
-    this.weaponService.getWeapon(1, null).subscribe((data: Weapon) => {
-      console.log(data);
-    });
+    // this.weaponService.getAllWeapons().subscribe((data: Weapon[]) => {
+    //   console.log(data);
+    // });
+    // this.weaponService.getWeapon(1, null).subscribe((data: Weapon) => {
+    //   console.log(data);
+    // });
   }
 }

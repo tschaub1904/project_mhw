@@ -21,6 +21,6 @@ export class CharmService {
   }
 
   getAllCharm(): Observable<Charm[]> {
-    return this.http.get<Charm[]>('https://mhw-db.com/charms');;
+    return this.http.get<Charm[]>('http://localhost:8000/api/charms');
   }
 }

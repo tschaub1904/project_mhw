@@ -9,9 +9,10 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { MainAreaComponent } from './components/layout/main-area/main-area.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
+import { CharmsListComponent } from './components/charms/charms-list/charms-list.component';
 
 
-const routes: Routes = [{path: '', component: MainAreaComponent}]
+const routes: Routes = [{path: '', component: CharmsListComponent}]
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ const routes: Routes = [{path: '', component: MainAreaComponent}]
     MainAreaComponent,
     SidebarComponent,
     SearchBarComponent,
+    CharmsListComponent
     
   ],
   imports: [
