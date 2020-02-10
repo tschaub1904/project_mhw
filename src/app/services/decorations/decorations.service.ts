@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Decoration } from 'src/app/models/skills';
+import { Decoration } from 'src/app/models/decoration';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
