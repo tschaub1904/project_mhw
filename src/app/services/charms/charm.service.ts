@@ -78,9 +78,7 @@ export class CharmService {
     return this.http.get<Charm>('https://mhw-db.com/charms/' + id)
   }
   getAllCharm(): Observable<Charm[]> {
-    console.log("test");
     var temp = this.http.get<Charm[]>('https://mhw-db.com/charms');
-    console.log(temp);
     return temp;
   }
 }
