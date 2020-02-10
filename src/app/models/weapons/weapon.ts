@@ -18,7 +18,7 @@ export interface Weapon {
     crafting: WeaponCraftingInfo,
     assets: WeaponAssets,
     durability: WeaponSharpness[],
-    elderseal: string, // ?
-    damageType: string, // ?
+    elderseal: string,
+    damageType: string,
     attribute: WeaponAttributes
 }
