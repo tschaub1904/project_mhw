@@ -10,6 +10,7 @@ import { MainAreaComponent } from './components/layout/main-area/main-area.compo
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
 import { CharmsListComponent } from './components/charms/charms-list/charms-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
@@ -22,12 +23,13 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     MainAreaComponent,
     SidebarComponent,
     SearchBarComponent,
-    CharmsListComponent
+    CharmsListComponent,
     
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
   ],
   providers: [],

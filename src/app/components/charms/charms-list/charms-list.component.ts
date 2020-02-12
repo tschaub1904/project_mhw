@@ -14,6 +14,7 @@ export class CharmsListComponent implements OnInit {
   ngOnInit() {
     this.charmService.getAllCharm().subscribe(charms => {
       this.charms = charms;
+      console.log(charms);
     })
   }
 }

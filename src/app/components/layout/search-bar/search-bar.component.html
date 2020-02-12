@@ -1,4 +1,10 @@
-<form>
-    <input type="text" placeholder="Search" name="search">
-    <button type="submit"><i class="fa fa-search">Search</i></button>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)">
+    <input formControlName="search" type='text'>
+    <button type="submit">Search</button>
 </form>
+<div *ngIf="searchResults">
+    <div  id="listItem" *ngFor="let result of searchResults">
+        <div class="listItem">{{result.name}}</div>
+        <div class="listItem">{{result.category}}</div>
+    </div>
+</div>
