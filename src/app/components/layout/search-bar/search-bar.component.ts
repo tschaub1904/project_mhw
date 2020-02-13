@@ -20,14 +20,14 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(searchData) {
-    this.searchService.setSearchName(searchData.search);
+  onChange(query) {
+    if (query.length < 4) {
+      this.searchResults = [];
+      return;
+    }
+    this.searchService.setSearchName(query);
     this.searchService.getResultListByName().subscribe(searchResponse => {
-       this.searchResults = [];
-       this.searchResults = searchResponse;
-       console.log(this.searchResults);
-    })
-    
+      this.searchResults = searchResponse;
+   })
   }
-
 }
