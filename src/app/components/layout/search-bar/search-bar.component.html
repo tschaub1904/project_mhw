@@ -4,7 +4,7 @@
 </form>
 <div *ngIf="searchResults">
     <div  id="listItem" *ngFor="let result of searchResults">
-        <div class="listItem">{{result.name}}</div>
-        <div class="listItem">{{result.category}}</div>
+        <div class="listItem"><p>{{result.name}}</p></div>
+        <div class="listItem"><p>{{result.category}}</p></div>
     </div>
 </div>
