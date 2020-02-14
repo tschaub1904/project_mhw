@@ -14,6 +14,7 @@ import { CharmsListComponent } from './components/charms/charms-list/charms-list
 import { ResultListComponent } from './components/search/result-list/result-list.component';
 import { SearchComponent } from './components/search/search/search.component';
 import { SearchFilterComponent } from './components/search/search-filter/search-filter.component';
+import { CharmsTileComponent } from './components/tiles/charms-tile/charms-tile.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -29,7 +30,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     ResultListComponent,
     SearchComponent,
     SearchFilterComponent,
-    
+    CharmsTileComponent,
   ],
   imports: [
     HttpClientModule,
