@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
@@ -10,7 +11,8 @@ import { MainAreaComponent } from './components/layout/main-area/main-area.compo
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
 import { CharmsListComponent } from './components/charms/charms-list/charms-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { RadioButtonComponent } from './components/layout/radio-button/radio-button.component';
 
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
@@ -24,12 +26,14 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     SidebarComponent,
     SearchBarComponent,
     CharmsListComponent,
+    RadioButtonComponent,
     
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     ReactiveFormsModule,
+    
     RouterModule.forRoot(routes),
   ],
   providers: [],
