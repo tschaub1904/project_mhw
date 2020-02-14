@@ -1,0 +1,7 @@
+<p>{{title}}:</p>
+<fieldset>
+    <div *ngFor="let item of itemList">
+        <input type="radio" [id]="item" name="criteria">
+        <label [for]="item">{{item}}</label>
+    </div>
+</fieldset>

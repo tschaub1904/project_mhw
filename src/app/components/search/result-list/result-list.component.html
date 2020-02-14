@@ -1,4 +1,3 @@
-<input type="text" id="query" #query (input)="onChange(query.value)">
 <div *ngIf="searchResults">
     <div  id="listItem" *ngFor="let result of searchResults">
         <div class="listItem"><p style="font-size: 1.2em"><b>{{result.name}}</b>, {{result.category}}</p></div>
