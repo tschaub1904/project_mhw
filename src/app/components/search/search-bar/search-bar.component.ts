@@ -7,13 +7,25 @@ import { SearchComponent } from '../search/search.component';
   styleUrls: ['./search-bar.component.sass']
 })
 export class SearchBarComponent implements OnInit {
-  
+  private delay = 500;
+  private timeout: number;
+  private lastQuery: string;
+
   constructor(public search: SearchComponent) {}
 
   ngOnInit() {
   }
 
   onChange(query) {
-    this.search.searchField = query;
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+    if (query === this.lastQuery)
+      return;
+
+    this.timeout = window.setTimeout(() => {
+      this.lastQuery = query;
+      this.search.searchField = query;
+    }, this.delay);
   }
 }
