@@ -9,11 +9,11 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { MainAreaComponent } from './components/layout/main-area/main-area.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
-import { SearchBarComponent } from './components/layout/search-bar/search-bar.component';
+import { SearchBarComponent } from './components/search/search-bar/search-bar.component';
 import { CharmsListComponent } from './components/charms/charms-list/charms-list.component';
-
-import { RadioButtonComponent } from './components/layout/radio-button/radio-button.component';
-
+import { ResultListComponent } from './components/search/result-list/result-list.component';
+import { SearchComponent } from './components/search/search/search.component';
+import { SearchFilterComponent } from './components/search/search-filter/search-filter.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -26,7 +26,9 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     SidebarComponent,
     SearchBarComponent,
     CharmsListComponent,
-    RadioButtonComponent,
+    ResultListComponent,
+    SearchComponent,
+    SearchFilterComponent,
     
   ],
   imports: [
