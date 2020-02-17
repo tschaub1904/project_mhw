@@ -1,9 +1,15 @@
-<div>
+<div class="tileWrapper">
   <div class="title">
     <span>{{tileIndex}} - {{item.data.name}}</span>
-    <button (click)="emitter.emit('close');">close</button>
+      <div (click)="emitter.emit('close');" id="close-button-div">
+        <div class="close-button-cross1">
+          <div class="close-button-cross2"></div>
+        </div>
+      </div>
   </div>
+  <div class="seperator"></div>
   <div class="content">
     <ng-template appTileHost></ng-template>
   </div>
+
 </div>
