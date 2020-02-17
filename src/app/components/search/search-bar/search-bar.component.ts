@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-search-bar',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-bar.component.sass']
 })
 export class SearchBarComponent implements OnInit {
-
-  constructor() { }
+  
+  constructor(public search: SearchComponent) {}
 
   ngOnInit() {
   }
 
+  onChange(query) {
+    this.search.searchField = query;
+  }
 }
