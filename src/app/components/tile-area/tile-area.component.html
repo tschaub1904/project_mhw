@@ -1,0 +1,6 @@
+<div class="item_tile" *ngFor="let tile of tileList; index as tileIndex;" (click)="close(tileIndex)">
+  <div style="border: 1px solid black; border-radius: 3px">
+    {{tile.data.name}}
+    <app-wrapper-tile [item]="tile"></app-wrapper-tile>
+  </div>
+</div>

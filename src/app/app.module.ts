@@ -15,10 +15,16 @@ import { ResultListComponent } from './components/search/result-list/result-list
 import { SearchComponent } from './components/search/search/search.component';
 import { SearchFilterComponent } from './components/search/search-filter/search-filter.component';
 import { CharmsTileComponent } from './components/tiles/charms-tile/charms-tile.component';
+import { WrapperTileComponent } from './components/tiles/wrapper-tile/wrapper-tile.component';
+import { TileHostDirective } from './directives/tile-host.directive';
+import { TileAreaComponent } from './components/tile-area/tile-area.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
 @NgModule({
+  entryComponents: [
+    CharmsTileComponent
+  ],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -31,6 +37,9 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     SearchComponent,
     SearchFilterComponent,
     CharmsTileComponent,
+    WrapperTileComponent,
+    TileHostDirective,
+    TileAreaComponent,
   ],
   imports: [
     HttpClientModule,
