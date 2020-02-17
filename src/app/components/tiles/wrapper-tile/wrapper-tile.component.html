@@ -1,0 +1,9 @@
+<div>
+  <div class="title">
+    <span>{{tileIndex}} - {{item.data.name}}</span>
+    <button (click)="emitter.emit('close');">close</button>
+  </div>
+  <div class="content">
+    <ng-template appTileHost></ng-template>
+  </div>
+</div>
