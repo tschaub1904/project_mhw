@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output } from '@angular/core';
 import { TileHostDirective } from 'src/app/directives/tile-host.directive';
 import { Charm } from 'src/app/models/charm';
 import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
@@ -12,6 +12,8 @@ import { TileItem } from 'src/app/services/searchResult.service';
 })
 export class WrapperTileComponent implements OnInit {
   @Input() item: TileItem;
+  @Input() tileIndex: number;
+  @Output() emitter = new EventEmitter();
   
   @ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
 
