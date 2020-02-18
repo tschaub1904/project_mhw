@@ -1,0 +1,6 @@
+<div>Skills</div>
+<div *ngFor="let skill of skills">
+    <div>Name: {{skill.name}}</div>
+    <div>Description {{skill.description}}</div>
+    <app-skill-rank-tile [skillRanks]="skill.ranks"></app-skill-rank-tile>
+</div>

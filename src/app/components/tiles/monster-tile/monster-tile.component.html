@@ -1,0 +1,57 @@
+<div>
+    <div>Type: {{data.type}}</div>
+    <div>Species: {{data.species}}</div>
+    <div>Description: {{data.description}}</div>
+    <div>Elements:</div>
+    <ul *ngFor="let element of data.elements">
+        <li>{{element}}</li>
+    </ul>
+    <div *ngFor="let ailment of data.ailments">
+        <div>Name: {{ailment.name}}</div>
+        <div>Description: {{ailment.description}}</div>
+        <div>Recovery:</div>
+        <ul *ngFor="let action of ailment.recovery.actions">
+            <li>{{action}}</li>
+        </ul>
+        <app-item-tile [data]="ailment.recovery.items"></app-item-tile>
+        <div>Protection</div>
+        <app-item-tile [data]="ailment.protection.items"></app-item-tile>
+        <app-skill-tile [skills]="ailment.protection.skills"></app-skill-tile>
+        <div>Locations:</div>
+        <div *ngFor="let location of data.locations">
+            <div>Name: {{location.name}}</div>
+            <div>Zone Count: {{location.zoneCount}}</div>
+            <div *ngFor="let camp of location.camps">
+                <div>Campname: {{camp.name}}</div>
+                <div>Zone: {{camp.zone}}</div>
+            </div>
+        </div>
+        <div>Resistances:</div>
+        <div *ngFor="let resistance of data.resistances">
+            <div>Elements:</div>
+            <ul>
+                <li>{{resistance.element}}</li>
+            </ul>
+            <div>Condition: {{resistance.condition}}</div>
+        </div>
+        <div *ngFor="let weakness of data.weaknesses">
+            <div>Elements:</div>
+            <ul>
+                <li>{{weakness.element}}</li>
+            </ul>
+            <div>Stars: {{weakness.stars}}</div>
+            <div>Condition: {{weakness.condition}}</div>
+        </div>
+        <div>Rewards:</div>
+        <div *ngFor="let reward of data.rewards">
+            <app-item-tile [data]="reward.item"></app-item-tile>
+            <div *ngFor="let condition of reward.conditions">
+            <div>Type: {{condition.type}}</div>
+            <div>Subtype: {{condition.subtype}}</div>
+            <div>Rank: {{condition.rank}}</div>
+            <div>Quantity: {{condition.quantity}}</div>
+            <div>Change: {{condition.change}}</div>
+            </div>
+        </div>
+    </div>
+</div>

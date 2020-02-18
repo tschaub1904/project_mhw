@@ -13,7 +13,7 @@ export interface Armor {
   defense: Defense,
   resistances: Resistances,
   slots: Slot[],
-  skills: Skill[],
+  skills: SkillRank[],
   armorSet: SetInfo,
   assets: ArmorAssets,
   crafting: ArmorCraftingInfo,
