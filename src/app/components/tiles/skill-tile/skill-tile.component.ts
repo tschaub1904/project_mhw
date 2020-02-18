@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Skill } from 'src/app/models/skill';
 
 @Component({
   selector: 'app-skill-tile',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./skill-tile.component.sass']
 })
 export class SkillTileComponent implements OnInit {
-
+  @Input() skills: Skill[];
+  
   constructor() { }
 
   ngOnInit() {

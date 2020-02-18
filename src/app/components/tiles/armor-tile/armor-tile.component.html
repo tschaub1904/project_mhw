@@ -1,18 +1,15 @@
 <div>
-      <div>Type:{{data.type}}</div>
-      <div>Rarity:{{data.rarity}}</div>
-      <div> Rank:{{data.rank}}</div>
-      <div> Defense:{{data.defense.base}}({{data.defense.max}})({{data.defense.augmented}})</div>
-      <div>Resistances: </div>
-      <ul>
-          <li>Fire:{{data.resistances.fire}}</li>
-          <li>Water:{{data.resistances.water}}</li>
-          <li>Ice:{{data.resistances.ice}}</li>
-          <li>Thunder:{{data.resistances.thunder}}</li>
-          <li>Dragon:{{data.resistances.dragon}}</li>
-      </ul>
-      Skills
-      <ul *ngFor="let skillRank of data.skills">
-        <li>{{skillRank.skillName}}</li>
-      </ul>
-  </div>
+  <div>Type:{{data.type}}</div>
+  <div>Rarity:{{data.rarity}}</div>
+  <div>Rank:{{data.rank}}</div>
+  <div>Defense:{{data.defense.base}}({{data.defense.max}})({{data.defense.augmented}})</div>
+  <div>Resistances: </div>
+  <ul>
+    <li>Fire:{{data.resistances.fire}}</li>
+    <li>Water:{{data.resistances.water}}</li>
+    <li>Ice:{{data.resistances.ice}}</li>
+    <li>Thunder:{{data.resistances.thunder}}</li>
+    <li>Dragon:{{data.resistances.dragon}}</li>
+  </ul>
+  <app-skill-rank-tile [skillRanks]="data.skills"></app-skill-rank-tile>
+</div>

@@ -22,6 +22,8 @@ import { MonsterTileComponent } from './components/tiles/monster-tile/monster-ti
 import { ArmorTileComponent } from './components/tiles/armor-tile/armor-tile.component';
 import { WeaponTileComponent } from './components/tiles/weapon-tile/weapon-tile.component';
 import { SkillTileComponent } from './components/tiles/skill-tile/skill-tile.component';
+import { SkillRankTileComponent } from './components/tiles/skill-rank-tile/skill-rank-tile.component';
+import { ItemTileComponent } from './components/tiles/item-tile/item-tile.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -52,6 +54,8 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     ArmorTileComponent,
     WeaponTileComponent,
     SkillTileComponent,
+    SkillRankTileComponent,
+    ItemTileComponent,
   ],
   imports: [
     HttpClientModule,
