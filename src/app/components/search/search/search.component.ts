@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   }
   public set categoryFilter(v: string) {
     this._categoryFilter = v;
+    this.search();
   }
 
   constructor(public searchService: SearchService) { }
@@ -33,11 +34,12 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    if (this.searchField.length < 4) {
+    if ( this.searchField == null ||this.searchField.length < 4) {
       this.searchResults = [];
       return;
     }
     this.searchService.setSearchName(this.searchField);
+    this.searchService.setSearchCategory(this.categoryFilter);
     this.searchService.getResultListByName().subscribe(searchResponse => {
       this.searchResults = searchResponse;
     });
