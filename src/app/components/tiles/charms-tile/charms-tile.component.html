@@ -1,0 +1,10 @@
+<div>
+  <div *ngFor="let charmRank of data.ranks">
+    Level:{{charmRank.level}}
+    Rarity:{{charmRank.rarity}}
+    Skills:
+    <ul *ngFor="let skillRank of charmRank.skills">
+      <li>{{skillRank.skillName}}</li>
+    </ul>
+  </div>
+</div>
