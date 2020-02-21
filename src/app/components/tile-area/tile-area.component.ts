@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChildren, QueryList, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentInit, HostListener, ElementRef } from '@angular/core';
 import { SearchResultService } from 'src/app/services/searchResult.service';
+import { TileOrganizer } from 'src/app/classes/tileOrganizer';
 
 @Component({
   selector: 'app-tile-area',
@@ -8,10 +9,10 @@ import { SearchResultService } from 'src/app/services/searchResult.service';
 })
 export class TileAreaComponent implements OnInit, AfterViewInit {
   tileList: any[] = [];
-  @ViewChildren('tileWrapper', {read: ElementRef}) tileWrappers: QueryList<ElementRef>;
   readonly baseHeight: number = 250;
+  tileOrganizer: TileOrganizer;
   
-  constructor(private searchResults: SearchResultService) { }
+  constructor(private searchResults: SearchResultService, private ref: ElementRef) { }
 
   ngOnInit() {
     this.searchResults.results.subscribe((data) => {
@@ -21,17 +22,12 @@ export class TileAreaComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.tileWrappers.changes.subscribe(data => {
-      for (let result of data._results) {
-        let {offsetHeight} = result.nativeElement;
-        
-        let m = Math.ceil(offsetHeight / this.baseHeight);
-        let actual_m = Math.min(3, m);
-        
-        result.nativeElement.style.height = actual_m*this.baseHeight+'px';
-        
-      }
-    });
+    this.tileOrganizer = new TileOrganizer();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    console.log("TileArea Resize", event);
   }
 
   close(index) {

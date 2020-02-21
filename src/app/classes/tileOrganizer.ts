@@ -6,32 +6,22 @@ export class TileOrganizer {
     readonly baseWidth: number = 400;
     readonly baseHeight: number = 250;
     readonly margin: number = 20;
-    elementRefs: QueryList<ElementRef>;
-    tiles = {};
+    tiles = [];
 
-    constructor(elementRefs: QueryList<ElementRef>) {
+    constructor() {
         console.log("tileOrganizer");
-        this.elementRefs = elementRefs;
-        this.elementRefs.changes.subscribe({
-            next: data => {
-                let newTile = !this.tiles.hasOwnProperty(data.last.data.id);
-                console.log("data: ", data.last, newTile);
-                this.tiles[data.last.data.id] = data.last;
-                //     for (let result of data._results) {
-                //         let { offsetHeight } = result.nativeElement;
-
-                //         let m = Math.ceil(offsetHeight / this.baseHeight);
-                //         let actual_m = Math.min(3, m);
-
-                //         result.nativeElement.style.height = actual_m * this.baseHeight + 'px';
-
-                //     }
-            }
-        });
-
-
     }
 
+    add(ref: ElementRef, id: string) {
+        let isNew = this.tiles.hasOwnProperty(id);
+        this.tiles[id] = ref;
 
+        console.log("TileOrganizer Add", this.tiles);
+    }
+
+    remove(id) {
+        console.log("TileOrganizer Remove", this.tiles);
+        delete this.tiles[id];
+    }
 
 }
