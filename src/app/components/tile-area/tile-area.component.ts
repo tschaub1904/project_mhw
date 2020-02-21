@@ -25,9 +25,9 @@ export class TileAreaComponent implements OnInit, AfterViewInit {
     this.tileOrganizer = new TileOrganizer();
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    console.log("TileArea Resize", event);
+  @HostListener('window:resize')
+  onResize() {
+    this.tileOrganizer.calcColumns(this.ref.nativeElement.offsetWidth)
   }
 
   close(index) {

@@ -24,4 +24,11 @@ export class TileOrganizer {
         delete this.tiles[id];
     }
 
+    calcColumns(width: number) {
+        let newColumns = Math.max(Math.floor(width / this.baseWidth), 1)
+        if (newColumns == this.columns)
+            return
+
+        this.columns = newColumns
+    }
 }
