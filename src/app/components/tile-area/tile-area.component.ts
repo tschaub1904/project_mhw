@@ -23,11 +23,12 @@ export class TileAreaComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.tileOrganizer = new TileOrganizer();
+    this.tileOrganizer.calcColumns(this.ref.nativeElement.offsetWidth);
   }
 
   @HostListener('window:resize')
   onResize() {
-    this.tileOrganizer.calcColumns(this.ref.nativeElement.offsetWidth)
+    this.tileOrganizer.calcColumns(this.ref.nativeElement.offsetWidth);
   }
 
   close(index) {
