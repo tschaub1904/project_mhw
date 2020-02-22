@@ -23,6 +23,7 @@ export class TileOrganizer {
         let left = insertColumn*this.baseWidth + (insertColumn+1) * this.margin;
         let top = this.margin + column_m*this.baseHeight + column_m*this.margin;
 
+
         ref.nativeElement.style.left = left + 'px';
         ref.nativeElement.style.top = top + 'px';
 
@@ -54,7 +55,11 @@ export class TileOrganizer {
         return m;
     }
     getSmallestColumn(): number {
-        // return smalles col
-        return 0;
+        let min = 0;
+        for (let i = 0; i < this.columnHeights.length; i++) {
+            if (this.columnHeights[i] < this.columnHeights[min])
+                min = i;
+        }
+        return min;
     }
 }
