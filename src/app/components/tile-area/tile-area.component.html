@@ -1,5 +1,2 @@
-<app-wrapper-tile 
-*ngFor="let tile of tileList; index as tileIndex;" 
-[item]="tile" 
-[tileIndex]="tileIndex"
-(emitter)="close(tileIndex)"></app-wrapper-tile>
+<app-wrapper-tile #tileWrapper *ngFor="let tile of tileList; index as tileIndex;" [item]="tile" [tileIndex]="tileIndex"
+  (emitter)="close(tileIndex)"></app-wrapper-tile>
