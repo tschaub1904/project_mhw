@@ -1,5 +1,10 @@
-import { ElementRef, QueryList } from "@angular/core";
+import { ElementRef, QueryList, Injectable } from "@angular/core";
+import { tileElement } from '../interfaces/tileElement';
+import { from } from 'rxjs';
 
+@Injectable({
+    providedIn: 'root'
+})
 
 export class TileOrganizer {
     columns: number;
@@ -7,28 +12,32 @@ export class TileOrganizer {
     readonly baseWidth: number = 400;
     readonly baseHeight: number = 250;
     readonly margin: number = 10;
-    tiles = [];
+    tiles: tileElement[] = [];
 
     constructor() {
         console.log("tileOrganizer");
     }
 
-    addNew(ref: ElementRef, id: string){
-        let isNew = !this.tiles.hasOwnProperty(id);
-        this.tiles.splice(0, 0, ref)[id];
+    addNew(ref: ElementRef, id: string) {
+        // console.log("double1", this.tiles.hasOwnProperty(id), id )
+        console.log(this.tiles[id])
+
+        let newTile: tileElement = { height: this.calcTileHeight(ref), id: id, ref: ref };
+        this.tiles.splice(0, 0, newTile);
+        console.log(this.tiles)
         this.calcAll();
     }
 
-    add(ref: ElementRef, id: string) {
+    add(tile: tileElement) {
         let insertColumn = this.getSmallestColumn();
-        let tile_m = this.calcTileHeight(ref);
+        let tile_m = tile.height;
         let column_m = this.columnHeights[insertColumn];
 
         let left = insertColumn * this.baseWidth + (insertColumn + 1) * this.margin;
         let top = this.margin + column_m * this.baseHeight + column_m * this.margin;
 
-        ref.nativeElement.style.left = left + 'px';
-        ref.nativeElement.style.top = top + 'px';
+        tile.ref.nativeElement.style.left = left + 'px';
+        tile.ref.nativeElement.style.top = top + 'px';
 
         this.columnHeights[insertColumn] = column_m + tile_m;
 
@@ -38,8 +47,9 @@ export class TileOrganizer {
 
     remove(id) {
         console.log("TileOrganizer Remove", this.tiles);
-        delete this.tiles[id];
-        this.columnHeights = new Array<number>(this.columns).fill(0);
+        this.tiles = this.tiles.filter(tile => {
+            return id != tile.id;
+        })
         this.calcAll();
     }
 
@@ -55,11 +65,10 @@ export class TileOrganizer {
     }
     calcTileHeight(ref: ElementRef): number {
         // console.log("Offset " , ref.nativeElement.offsetHeight)
-
         let m = Math.min(Math.ceil(ref.nativeElement.offsetHeight / this.baseHeight), 3);
-        let newHeight = m * this.baseHeight 
+        let newHeight = m * this.baseHeight + (m - 1) * this.margin;
         //TODO: height grows from 2 to 3 because of margin, fix it Tobi
-        // + (m - 1) * this.margin;
+
         ref.nativeElement.style.height = newHeight + 'px';
         return m;
     }
@@ -75,14 +84,26 @@ export class TileOrganizer {
     calcAll() {
         this.columnHeights = new Array<number>(this.columns).fill(0);
 
-        let newTiles = this.tiles;
-        let key;
+        this.tiles.forEach(tile => {
+            this.add(tile)
+        });
         console.log("tiles", this.tiles)
-        for(key in this.tiles){
-            console.log("tile", key, this.tiles[key]);
-            let ref: ElementRef = this.tiles[key];
-            this.add(ref, key);
-        }
+    }
 
+    hasTile(id: string) {
+        return this.tiles.some(tile => {
+            return tile.id == id
+        })
+    }
+
+    moveTile(fromIndex: number, toIndex: number, range: number = 1){
+        this.tiles.splice( toIndex, 0 ,...this.tiles.splice(fromIndex, range));
+        this.calcAll();
+    }
+
+    getTileIndex(id: string){
+        return this.tiles.indexOf(this.tiles.find(tile => {
+            return tile.id == id;
+        }));
     }
 }

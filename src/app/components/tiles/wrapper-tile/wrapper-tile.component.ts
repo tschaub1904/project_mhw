@@ -5,6 +5,7 @@ import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
 import { TileComponent } from 'src/app/interfaces/tileInterface';
 import { TileItem } from 'src/app/services/searchResult.service';
 import { TileAreaComponent } from '../../tile-area/tile-area.component';
+import { TileOrganizer } from 'src/app/services/tileOrganizer.service';
 
 @Component({
   selector: 'app-wrapper-tile',
@@ -19,7 +20,7 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
   
   @ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent) { 
+  constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer) { 
   }
 
   ngOnInit() {
@@ -28,11 +29,11 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     console.log("Create Wrapper", this.ref);
-    this.tileArea.tileOrganizer.addNew(this.ref, `${this.item.data.id}_${this.item.data.name}`);
+    this.tileOrganizer.addNew(this.ref, `${this.item.data.id}_${this.item.data.name}`);
   }
   ngOnDestroy() {
     console.log("Destroy Wrapper", this.ref);
-    this.tileArea.tileOrganizer.remove(`${this.item.data.id}_${this.item.data.name}`);
+    this.tileOrganizer.remove(`${this.item.data.id}_${this.item.data.name}`);
   }
   loadComponent() {
     const componentFactory =
