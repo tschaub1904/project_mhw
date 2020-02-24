@@ -1,9 +1,7 @@
 <div class="title">
-  <span>{{tileIndex}} - {{item.data.name}}</span>
-    <div (click)="emitter.emit('close');" id="close-button-div">
-      <div class="close-button-cross1">
-        <div class="close-button-cross2"></div>
-      </div>
+  <span>{{ item.data.name }}</span>
+    <div (click)="emitter.emit('close');" class="close-button">
+      <span>x</span>
     </div>
 </div>
 <div class="content">
