@@ -4,5 +4,11 @@
     </app-tab>
     <app-tab [tabTitle]="'Tab 2'">
         weapon-tile works 2!
+        <app-collapsible [collapsibleTitle]="'collapsible'">
+            weapon collapsible works!
+            <app-collapsible [collapsibleTitle]="'collapsible'">
+                weapon collapsible works!
+            </app-collapsible>
+        </app-collapsible>
     </app-tab>
 </app-tabs>

@@ -26,6 +26,7 @@ import { SkillRankTileComponent } from './components/tiles/skill-rank-tile/skill
 import { ItemTileComponent } from './components/tiles/item-tile/item-tile.component';
 import { TabsComponent } from './components/tabs/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
+import { CollapsibleComponent } from './components/collapsible/collapsible.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -60,6 +61,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     ItemTileComponent,
     TabsComponent,
     TabComponent,
+    CollapsibleComponent,
   ],
   imports: [
     HttpClientModule,
