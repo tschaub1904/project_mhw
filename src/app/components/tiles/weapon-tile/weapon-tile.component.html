@@ -1,14 +1,53 @@
 <app-tabs>
-    <app-tab [tabTitle]="'Tab 1'">
-        weapon-tile works 1!
+    <app-tab [tabTitle]="'Info'">
+        <table>
+            <tr>
+                <td>Type</td>
+                <td>{{data.type}}</td>
+            </tr>
+            <tr>
+                <td>Rarity</td>
+                <td>{{data.rarity}}</td>
+            </tr>
+            <tr>
+                <td>Attack</td>
+                <td>{{data.attack.display}}</td>
+            </tr>
+            <tr>
+                <td>Slots</td>
+            </tr>
+            <tr>
+                <td [attr.rowspan]="data.elements.length">Element</td>
+                <td>
+                    <table>
+                        <tr *ngFor="let element of data.elements">
+                            <img style="width: 10px; height: 10px;">
+                            <span class="hiddenElement" *ngIf="element.hidden">
+                                ({{element.damage}})
+                            </span>
+                            <span *ngIf="!element.hidden">
+                                {{element.damage}}
+                            </span>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
     </app-tab>
-    <app-tab [tabTitle]="'Tab 2'">
-        weapon-tile works 2!
-        <app-collapsible [collapsibleTitle]="'collapsible'">
-            weapon collapsible works!
-            <app-collapsible [collapsibleTitle]="'collapsible'">
-                weapon collapsible works!
-            </app-collapsible>
-        </app-collapsible>
+    <app-tab [tabTitle]="'Crafting'">
+        <table>
+            <tr>
+                <td>Craftable</td>
+                <td>{{data.crafting.craftable}}</td>
+            </tr>
+            <tr *ngIf="data.crafting.previous">
+                <td>Previous Weapon</td>
+                <td>{{data.crafting.previous}}</td>
+            </tr>
+            <tr>
+                <td>Next Weapon</td>
+                <td>{{data.crafting.previous}}</td>
+            </tr>
+        </table>
     </app-tab>
 </app-tabs>
