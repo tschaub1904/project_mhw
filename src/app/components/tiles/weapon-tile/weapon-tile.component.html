@@ -50,4 +50,17 @@
             </tr>
         </table>
     </app-tab>
+    <app-tab [tabTitle]="'Testing'">
+        <app-item-info [label]="'testing'">
+            <div *ngFor="let item of data.durability">
+                <div>{{item.red}}</div>
+                <div>{{item.orange}}</div>
+                <div>{{item.yellow}}</div>
+                <div>{{item.green}}</div>
+                <div>{{item.blue}}</div>
+                <div>{{item.white}}</div>
+                <div>{{item.purple}}</div>
+            </div>
+        </app-item-info>
+    </app-tab>
 </app-tabs>
