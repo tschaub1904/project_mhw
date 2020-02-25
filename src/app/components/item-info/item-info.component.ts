@@ -19,5 +19,4 @@ export class ItemInfoComponent implements OnInit {
       this.list = dataArray;
     }
   }
-
 }

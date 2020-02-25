@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Slot } from 'src/app/models/dataTypes/slot';
-import { constants } from '../../../../constants'
+import { constants } from '../../../../../constants'
 
 @Component({
   selector: 'app-slot',
@@ -16,6 +16,7 @@ export class SlotComponent implements OnInit {
   }
 
   loadPath(rank: number){
+    console.log(constants[0].api + 'images/slots/slot_' + rank + '.png')
     return constants[0].api + 'images/slots/slot_' + rank + '.png'
   }
 
