@@ -50,17 +50,11 @@
             </tr>
         </table>
     </app-tab>
-    <app-tab [tabTitle]="'Testing'">
-        <app-item-info [label]="'testing'">
-            <div *ngFor="let item of data.durability">
-                <div>{{item.red}}</div>
-                <div>{{item.orange}}</div>
-                <div>{{item.yellow}}</div>
-                <div>{{item.green}}</div>
-                <div>{{item.blue}}</div>
-                <div>{{item.white}}</div>
-                <div>{{item.purple}}</div>
-            </div>
-        </app-item-info>
+    <app-tab [tabTitle]="'Sharpness'">
+        <app-tabs>
+            <app-tab *ngFor="let item of data.durability; index as handiNumber;" [tabTitle]="'Handicraft ' + addOne(handiNumber)">
+                <app-sharpness  [sharpness]="item"></app-sharpness>
+            </app-tab>
+        </app-tabs>
     </app-tab>
 </app-tabs>

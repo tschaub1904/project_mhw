@@ -19,7 +19,6 @@ export class TileOrganizer {
     }
 
     addNew(ref: ElementRef, id: string) {
-        // console.log("double1", this.tiles.hasOwnProperty(id), id )
         console.log(this.tiles[id])
 
         let newTile: tileElement = { height: this.calcTileHeight(ref), id: id, ref: ref };

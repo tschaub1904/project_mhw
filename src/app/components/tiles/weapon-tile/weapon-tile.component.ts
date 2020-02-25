@@ -12,7 +12,11 @@ export class WeaponTileComponent implements OnInit, TileComponent {
   constructor() { }
 
   ngOnInit() {
-    
+
+  }
+
+  addOne(index) {
+    return index + 1
   }
 
 }
