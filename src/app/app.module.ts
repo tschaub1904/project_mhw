@@ -28,6 +28,7 @@ import { TabsComponent } from './components/tabs/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
 import { CollapsibleComponent } from './components/collapsible/collapsible.component';
 import { ItemInfoComponent } from './components/item-info/item-info.component';
+import { SlotComponent } from './components/slot/slot.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -64,6 +65,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     TabComponent,
     CollapsibleComponent,
     ItemInfoComponent,
+    SlotComponent,
   ],
   imports: [
     HttpClientModule,

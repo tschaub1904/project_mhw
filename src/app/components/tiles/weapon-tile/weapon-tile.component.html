@@ -14,7 +14,10 @@
                 <td>{{data.attack.display}}</td>
             </tr>
             <tr>
-                <td>Slots</td>
+                <app-item-info [label]="'Slots'">
+                    <app-slot [slots]="data.slots">
+                    </app-slot>
+                </app-item-info>
             </tr>
             <tr>
                 <td [attr.rowspan]="data.elements.length">Element</td>
