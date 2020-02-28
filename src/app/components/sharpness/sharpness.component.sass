@@ -7,12 +7,14 @@
         padding: 5px
         height: 15px
         background: #424242
+        transform: skew(30deg)
+        width: 96%
     div
         height: 15px
         float: left
         background: #424242
     .sharpness-red
-        background-color: #a92e38 
+        background-color: #a92e38
     .sharpness-orange
         background-color: #c75d37 
     .sharpness-yellow
@@ -30,6 +32,7 @@
 .tooltip
     position: relative
     display: inline-block 
+    transition: width ease .075s
     .tooltiptext
         font-size: 0.8em
         top: 10px
@@ -43,6 +46,7 @@
         padding: 5px 0
         position: absolute
         z-index: 1
+        transform: skew(-30deg)
     &:hover 
         .tooltiptext 
             visibility: visible

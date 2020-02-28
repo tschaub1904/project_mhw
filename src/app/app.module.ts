@@ -29,6 +29,7 @@ import { TabComponent } from './components/tabs/tab/tab.component';
 import { CollapsibleComponent } from './components/collapsible/collapsible.component';
 import { ItemInfoComponent } from './components/item-info/item-info.component';
 import { SharpnessComponent } from './components/sharpness/sharpness.component';
+import { NumberRangeComponent } from './components/inputs/number-range/number-range.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -66,6 +67,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     CollapsibleComponent,
     ItemInfoComponent,
     SharpnessComponent,
+    NumberRangeComponent,
   ],
   imports: [
     HttpClientModule,

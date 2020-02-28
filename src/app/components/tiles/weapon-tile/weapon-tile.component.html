@@ -51,10 +51,11 @@
         </table>
     </app-tab>
     <app-tab [tabTitle]="'Sharpness'">
-        <app-tabs>
+        <app-sharpness [sharpnessLevels]="data.durability"></app-sharpness>
+
+        <!-- <app-tabs>
             <app-tab *ngFor="let item of data.durability; index as handiNumber;" [tabTitle]="'Handicraft ' + addOne(handiNumber)">
-                <app-sharpness  [sharpness]="item"></app-sharpness>
             </app-tab>
-        </app-tabs>
+        </app-tabs> -->
     </app-tab>
 </app-tabs>

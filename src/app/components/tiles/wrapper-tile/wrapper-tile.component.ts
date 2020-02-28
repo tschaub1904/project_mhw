@@ -28,11 +28,11 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    console.log("Create Wrapper", this.ref);
+    // console.log("Create Wrapper", this.ref);
     this.tileOrganizer.addNew(this.ref, `${this.item.data.id}_${this.item.data.name}`);
   }
   ngOnDestroy() {
-    console.log("Destroy Wrapper", this.ref);
+    // console.log("Destroy Wrapper", this.ref);
     this.tileOrganizer.remove(`${this.item.data.id}_${this.item.data.name}`);
   }
   loadComponent() {
