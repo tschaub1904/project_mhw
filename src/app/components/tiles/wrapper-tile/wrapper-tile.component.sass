@@ -1,50 +1,39 @@
-.tileWrapper
+:host
     margin: 8px
-    border: #5e0606 solid 2px
     border-radius: 4px
-    background: #2e2e2e    
-    display: inline-block
-    padding: 3px
-    color: #d8c8c3
-    padding: 0
+    background:#494a4b    
+    display: flex
 
-.seperator
-    margin: 5px 0 5px 0
-    padding: 0
-    width: 100%
-    height: 2px
-    background: #5e0606
+    flex-direction: column
+
+    color: #d8c8c3
+    // padding: 8px 4px
+    box-sizing: border-box
+    width: 400px
+    
+    position: absolute
+    right: -500px
+    transition: left ease-in .2s, top ease-in .2s
 
 .content
-    padding: 3px
+    background-color: #333
+    flex-grow: 2
+    overflow-y: auto
+    
 
 .title
-    padding: 3px
+    padding: 8px
+    padding-bottom: 6px
 
-#close-button-div 
-  width: 25px
-  height: 15px
-  background-color: #830c0c
-  border: 1px solid black
-  display: inline-block
+.close-button
+  width: 22px
+  height: 22px
   float: right
-  border-radius: 2px
+  border-radius: 3px
+  cursor: pointer
+  text-align: center
+  user-select: none
+
   &:hover
-      background-color: #a71212
-
-
-.close-button-cross1
-  height: 15px
-  width: 1px
-  margin-left: 12px
-  background-color: black
-  transform: rotate(45deg)
-  Z-index: 1
-
-
-.close-button-cross2
-  height: 15px
-  width: 2px
-  background-color: black
-  transform: rotate(90deg)
-  Z-index: 2
+    filter: brightness(2)
+    background-color: #ffffff22

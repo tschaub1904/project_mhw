@@ -1,0 +1,6 @@
+<div>
+  <div (click)="toggleActive()" [class.active]="active" class="collapsible-title">{{ title }}</div>
+  <div [hidden]="!active" class="collapsible-content">
+    <ng-content></ng-content>
+  </div>
+</div>
