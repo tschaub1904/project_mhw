@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy, HostListener, HostBinding } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy, HostListener, HostBinding, ChangeDetectorRef } from '@angular/core';
 import { TileHostDirective } from 'src/app/directives/tile-host.directive';
 import { Charm } from 'src/app/models/charm';
 import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
@@ -23,7 +23,7 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 	@ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
 	@HostBinding('class.someClass') isCovered: boolean = false;
 
-	constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer) {
+	constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer, private cd: ChangeDetectorRef) {
 	}
 
 	ngOnInit() {
@@ -47,13 +47,15 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 		(<TileComponent>componentRef.instance).data = this.item.data;
 	}
 
-	onDrag(event: DragEvent) {
-		// console.log("onDrag(): ", event.clientX, event.clientY)
-	}
-
+	// @HostListener('drag', ["$event"])
+	// onDrag(event: any) {
+		
+	// 	this.cd.detach();
+	// 	// console.log("onDrag(): ", event);
+	// }
+	
 	onDragStart() {
 		this.tileOrganizer.setDraggedTileIndex(this.tileId);
-		// console.log("onDragStart(): ", this.tileId);
 	}
 
 	@HostListener('dragenter', ["$event"])
@@ -62,30 +64,25 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 		event.preventDefault();
 
 		this.eventDepth++;
-		// console.log("onDragEnter()", this.eventDepth);
 		this.isCovered = true;
 	}
-
 	@HostListener('dragleave', ["$event"])
 	onDragLeave(event: Event) {
 		event.preventDefault();
 		event.stopPropagation();
 
 		this.eventDepth--;
-		// console.log("onDragLeave()", this.eventDepth)
 		if (this.eventDepth == 0) 
 			this.isCovered = false;
 		
 	}
-
 	@HostListener('dragover', ["$event"])
 	onDragOver(event) {
-		event.preventDefault()
+		event.preventDefault();
+		event.stopPropagation();
 	}
-
 	@HostListener('drop')
 	onDrop() {
-		// console.log("onDrop(): ", this.tileId);
 		this.eventDepth = 0;
 		this.isCovered = false;
 
