@@ -1,0 +1,55 @@
+<app-tabs>
+    <app-tab [tabTitle]="'Info'">
+
+            <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
+            <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
+            <app-item-info [label]="'Attack'">{{data.attack.display}}</app-item-info>
+            <app-item-info [label]="'Slots'">
+                <app-slot [slots]="data.slots">
+                </app-slot>
+            </app-item-info>
+            <app-item-info [label]="'Elemental Damage'">
+                <app-elemental-damage [dmgs]="data.elements"></app-elemental-damage>
+            </app-item-info>
+            <!-- <tr>
+                <td [attr.rowspan]="data.elements.length">Element</td>
+                <td>
+                    <table>
+                        <tr *ngFor="let element of data.elements">
+                            <img style="width: 10px; height: 10px;">
+                            <span class="hiddenElement" *ngIf="element.hidden">
+                                ({{element.damage}})
+                            </span>
+                            <span *ngIf="!element.hidden">
+                                {{element.damage}}
+                            </span>
+                        </tr>
+                    </table>
+                </td>
+            </tr> -->
+
+    </app-tab>
+    <app-tab [tabTitle]="'Crafting'">
+        <table>
+            <tr>
+                <td>Craftable</td>
+                <td>{{data.crafting.craftable}}</td>
+            </tr>
+            <tr *ngIf="data.crafting.previous">
+                <td>Previous Weapon</td>
+                <td>{{data.crafting.previous}}</td>
+            </tr>
+            <tr>
+                <td>Next Weapon</td>
+                <td>{{data.crafting.previous}}</td>
+            </tr>
+        </table>
+    </app-tab>
+    <app-tab [tabTitle]="'Sharpness'">
+        <app-tabs>
+            <app-tab *ngFor="let item of data.durability; index as handiNumber;" [tabTitle]="'Handicraft ' + addOne(handiNumber)">
+                <app-sharpness  [sharpness]="item"></app-sharpness>
+            </app-tab>
+        </app-tabs>
+    </app-tab>
+</app-tabs>

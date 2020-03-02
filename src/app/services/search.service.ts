@@ -7,14 +7,18 @@ import { SearchObject } from '../models/search';
 })
 export class SearchService {
   searchObject: SearchObject[] = []
-  postSearchObject: SearchObject  = { id: 0, name: '', category: ''};
+  postSearchObject: SearchObject = { id: 0, name: '', category: '' };
   constructor(private http: HttpClient) { }
 
-  setSearchName(name: string){
+  setSearchName(name: string) {
     this.postSearchObject.name = name;
   }
 
-  getResultListByName(){
+  setSearchCategory(category: string) {
+    this.postSearchObject.category = category
+  }
+
+  getResultListByName() {
     console.log(this.postSearchObject)
     return this.http.post<SearchObject[]>('http://localhost:8000/api/search', this.postSearchObject);
   }

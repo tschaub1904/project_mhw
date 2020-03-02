@@ -1,0 +1,39 @@
+:host
+    margin: 8px
+    border-radius: 4px
+    background:#494a4b    
+    display: flex
+
+    flex-direction: column
+
+    color: #d8c8c3
+    // padding: 8px 4px
+    box-sizing: border-box
+    width: 400px
+    
+    position: absolute
+    right: -500px
+    transition: left ease-in .2s, top ease-in .2s
+
+.content
+    background-color: #333
+    flex-grow: 2
+    overflow-y: auto
+    
+
+.title
+    padding: 8px
+    padding-bottom: 6px
+
+.close-button
+  width: 22px
+  height: 22px
+  float: right
+  border-radius: 3px
+  cursor: pointer
+  text-align: center
+  user-select: none
+
+  &:hover
+    filter: brightness(2)
+    background-color: #ffffff22

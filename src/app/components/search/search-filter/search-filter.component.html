@@ -1,6 +1,8 @@
-<fieldset>
+
+<button type="button" class="collapsible" (click)="onClick()">Filter</button>
+<div *ngIf="clicked" class="filterContent">
     <div *ngFor="let item of itemList">
-        <input type="radio" [id]="item" name="criteria">
-        <label [for]="item">{{item}}</label>
+        <input type="radio" [id]="item[0]" name="criteria" (change)="onChange(item[1])">
+        <label [for]="item">{{item[0]}}</label>
     </div>
-</fieldset>
+</div>
