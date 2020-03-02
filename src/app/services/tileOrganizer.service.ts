@@ -13,6 +13,7 @@ export class TileOrganizer {
     readonly baseHeight: number = 250;
     readonly margin: number = 10;
     tiles: tileElement[] = [];
+    private draggedTileIndex: number; 
 
     constructor() {
         console.log("tileOrganizer");
@@ -23,7 +24,7 @@ export class TileOrganizer {
 
         let newTile: tileElement = { height: this.calcTileHeight(ref), id: id, ref: ref };
         this.tiles.splice(0, 0, newTile);
-        console.log(this.tiles)
+        // console.log(this.tiles)
         this.calcAll();
     }
 
@@ -105,4 +106,14 @@ export class TileOrganizer {
             return tile.id == id;
         }));
     }
+
+    setDraggedTileIndex(tileId: string){
+        this.draggedTileIndex = this.getTileIndex(tileId);
+    }
+
+    dropTile(destinationTileId: string) {
+        let index = this.getTileIndex(destinationTileId);
+        this.moveTile(this.draggedTileIndex, index);
+        this.draggedTileIndex = null;
+    } 
 }

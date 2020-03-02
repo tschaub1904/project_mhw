@@ -15,7 +15,7 @@ export class ElementalDamageComponent implements OnInit {
   }
 
   loadPath(elementType: string) {
-    console.log(constants[0].api + "images/elements/" + elementType + ".jpg")
+    // console.log(constants[0].api + "images/elements/" + elementType + ".jpg")
     return constants[0].api + "images/elements/" + elementType + ".png";
   }
 

@@ -32,8 +32,8 @@ export class SharpnessComponent implements OnInit {
     this.purple = this.sharpness.purple / this.divider;
 
     this.sharpnessWidth = this.sharpnessWidth / this.divider
-    console.log(this.sharpness)
-    console.log(this)
+    // console.log(this.sharpness)
+    // console.log(this)
 
   }
 

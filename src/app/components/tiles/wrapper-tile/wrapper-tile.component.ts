@@ -17,7 +17,9 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() item: TileItem;
   @Input() tileIndex: number;
   @Output() emitter = new EventEmitter();
-  
+  tileId: string;
+  isCovered: boolean;
+
   @ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer) { 
@@ -25,15 +27,16 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.loadComponent();
+    this.tileId = `${this.item.data.id}_${this.item.data.name}`;
   }
 
   ngAfterViewInit() {
     console.log("Create Wrapper", this.ref);
-    this.tileOrganizer.addNew(this.ref, `${this.item.data.id}_${this.item.data.name}`);
+    this.tileOrganizer.addNew(this.ref, this.tileId);
   }
   ngOnDestroy() {
     console.log("Destroy Wrapper", this.ref);
-    this.tileOrganizer.remove(`${this.item.data.id}_${this.item.data.name}`);
+    this.tileOrganizer.remove(this.tileId);
   }
   loadComponent() {
     const componentFactory =
@@ -43,6 +46,34 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
     (<TileComponent>componentRef.instance).data = this.item.data;
+  }
+
+  onDrag(event: DragEvent){
+    // console.log("onDrag(): ", event.clientX, event.clientY)
+  }
+
+  onDragStart(){
+    this.tileOrganizer.setDraggedTileIndex(this.tileId);
+    // console.log("onDragStart(): ", this.tileId);
+  }
+
+  onDragEnter() {
+    // console.log("onDragEnter()")
+    this.isCovered = true;
+  }
+
+  onDragLeave() {
+    // console.log("onDragLeave()")
+
+    this.isCovered = false;
+
+  }
+
+  onDrop(){
+    // console.log("onDrop(): ", this.tileId);
+    this.isCovered = false;
+
+    this.tileOrganizer.dropTile(this.tileId);
   }
 
 }
