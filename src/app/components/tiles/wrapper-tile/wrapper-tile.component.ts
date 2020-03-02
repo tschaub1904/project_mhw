@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { TileHostDirective } from 'src/app/directives/tile-host.directive';
 import { Charm } from 'src/app/models/charm';
 import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
@@ -31,11 +31,9 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    // console.log("Create Wrapper", this.ref);
     this.tileOrganizer.addNew(this.ref, `${this.item.data.id}_${this.item.data.name}`);
   }
   ngOnDestroy() {
-    // console.log("Destroy Wrapper", this.ref);
     this.tileOrganizer.remove(`${this.item.data.id}_${this.item.data.name}`);
   }
   loadComponent() {
@@ -57,18 +55,28 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
     // console.log("onDragStart(): ", this.tileId);
   }
 
-  onDragEnter() {
-    // console.log("onDragEnter()")
+  @HostListener('dragenter', ["$event"])
+  onDragEnter(event: Event) {
     this.isCovered = true;
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("onDragEnter()", (event.target as Element).tagName)
   }
 
-  onDragLeave() {
-    // console.log("onDragLeave()")
-
+  @HostListener('dragleave', ["$event"])
+  onDragLeave(event: Event) {
     this.isCovered = false;
-
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("onDragLeave()", (event.target as Element).tagName)
   }
 
+  @HostListener('dragover', ["$event"])
+  onDragOver(event){
+    event.preventDefault()
+  }
+
+  @HostListener('drop')
   onDrop(){
     // console.log("onDrop(): ", this.tileId);
     this.isCovered = false;

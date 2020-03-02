@@ -6,5 +6,5 @@
     <div [style.width.%]="sharpness.green / 4" class="sharpness-green tooltip"><div class="tooltiptext">{{sharpness.green}} Hits</div></div>
     <div [style.width.%]="sharpness.blue / 4" class="sharpness-blue tooltip"><div class="tooltiptext">{{sharpness.blue}} Hits</div></div>
     <div [style.width.%]="sharpness.white / 4" class="sharpness-white tooltip"><div class="tooltiptext">{{sharpness.white}} Hits</div></div>
-    <div [style.width.%]="sharpness.purple / 4" class="sharpness-purple tooltip"><div class="tooltiptext" *ngIf="sharpness.purple != 0">{{sharpness.purple}} Hits</div></div>
+    <div *ngIf="sharpness.purple" [style.width.%]="sharpness.purple / 4" class="sharpness-purple tooltip"><div class="tooltiptext" *ngIf="sharpness.purple != 0">{{sharpness.purple}} Hits</div></div>
 </div>

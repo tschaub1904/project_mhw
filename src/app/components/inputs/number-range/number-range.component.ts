@@ -22,13 +22,10 @@ export class NumberRangeComponent implements OnInit {
   }
   setValue(num: any) {
     let newNum = parseInt(num);
-    // console.log("setValue before check: ", num, newNum);
     newNum = isNaN(newNum) ? 0 : newNum;
-    // console.log("setValue after check: ", num, newNum);
 
     this.value = Math.max(Math.min((newNum), this.max), this.min);
     this.newValue.emit(this.value); 
-    // console.log("Final value is: ", this.value)
   }
 
 }

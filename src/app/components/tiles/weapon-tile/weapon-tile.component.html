@@ -45,7 +45,7 @@
             </tr>
         </table>
     </app-tab>
-    <app-tab [tabTitle]="'Sharpness'">
+    <app-tab *ngIf="data.durability" [tabTitle]="'Sharpness'">
         <app-sharpness [sharpnessLevels]="data.durability"></app-sharpness>
 
         <!-- <app-tabs>

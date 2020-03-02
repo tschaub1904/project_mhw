@@ -19,7 +19,6 @@ export class SearchService {
   }
 
   getResultListByName() {
-    console.log(this.postSearchObject)
     return this.http.post<SearchObject[]>('http://localhost:8000/api/search', this.postSearchObject);
   }
 }

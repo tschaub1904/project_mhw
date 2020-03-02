@@ -26,7 +26,6 @@ export class ResultListComponent implements OnInit {
   onClick(result: SearchObject){
     let id = `${result.id}_${result.name}`
     let tileIndex = this.tileOrganizer.getTileIndex(id)
-    console.log(tileIndex)
     if (tileIndex >= 0) {
       this.tileOrganizer.moveTile(tileIndex, 0)
       return;

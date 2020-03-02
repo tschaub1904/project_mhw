@@ -19,13 +19,8 @@ export class SharpnessComponent implements OnInit {
 
   ngOnInit() {
     this.sharpness = this.sharpnessLevels[0];
-    console.log("Sharpness OnInit()", this.sharpnessLevels);
 
     this.sharpnessWidth = this.sharpnessWidth / this.divider;
-  }
-
-  updateSharpness() {
-    console.log(this);
   }
 
   setHandicraftLevel(event: any) {
