@@ -1,9 +1,11 @@
-<div class="title">
-  <span>{{ item.data.name }}</span>
+<div (drop)="onDrop()" (dragover)="$event.preventDefault()" (dragover)="onDragEnter()" (dragleave)="onDragLeave()"[class.outerBorder]="isCovered">
+  <div class="title" (dragstart)="onDragStart()" (drag)="onDrag($event)" draggable="true">
+    <span>{{ item.data.name }}</span>
     <div (click)="emitter.emit('close');" class="close-button">
       <span>x</span>
     </div>
-</div>
-<div class="content">
-  <ng-template appTileHost></ng-template>
+  </div>
+  <div class="content">
+    <ng-template appTileHost></ng-template>
+  </div>
 </div>
