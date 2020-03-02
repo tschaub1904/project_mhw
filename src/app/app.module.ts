@@ -31,6 +31,7 @@ import { ItemInfoComponent } from './components/item-info/item-info.component';
 import { SlotComponent } from './components/details/slot/slot.component';
 import { ElementalDamageComponent } from './components/details/elemental-damage/elemental-damage.component';
 import { SharpnessComponent } from './components/sharpness/sharpness.component';
+import { NumberRangeComponent } from './components/inputs/number-range/number-range.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -70,6 +71,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     SlotComponent,
     ElementalDamageComponent,
     SharpnessComponent,
+    NumberRangeComponent,
   ],
   imports: [
     HttpClientModule,
