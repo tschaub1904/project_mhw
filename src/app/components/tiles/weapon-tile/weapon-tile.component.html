@@ -21,10 +21,12 @@
             </div>
         </app-item-info>
         <app-item-info *ngIf="data.crafting.branches.length" [label]="'Next Weapon'">
-            <div class="clickable" *ngFor="let branch of weaponBranchNames; index as branchIndex" (click)="onClick(data.crafting.branches[branchIndex], branch)">
+            <div class="clickable" *ngFor="let branch of weaponBranchNames; index as branchIndex"
+                (click)="onClick(data.crafting.branches[branchIndex], branch)">
                 {{branch}}
             </div>
         </app-item-info>
+        <app-crafting-material [craftingMaterials]="data.crafting.craftingMaterials"></app-crafting-material>
     </app-tab>
     <app-tab *ngIf="data.durability" [tabTitle]="'Sharpness'">
         <app-sharpness [sharpnessLevels]="data.durability"></app-sharpness>
