@@ -1,0 +1,52 @@
+:host
+    padding: 10px
+    width: 100%
+    // display: block
+
+    .sharpness-bar
+        padding: 5px
+        height: 15px
+        background: #424242
+        transform: skew(30deg)
+        width: 96%
+    div
+        height: 15px
+        float: left
+        background: #424242
+    .sharpness-red
+        background-color: #a92e38
+    .sharpness-orange
+        background-color: #c75d37 
+    .sharpness-yellow
+        background-color: #b9a72d 
+    .sharpness-green
+        background-color: #64a018 
+    .sharpness-blue
+        background-color: #416fd7 
+    .sharpness-white
+        background-color: #d4d1ce 
+    .sharpness-purple
+        background-color: #834ee5 
+        
+
+.tooltip
+    position: relative
+    display: inline-block 
+    transition: width ease .075s
+    .tooltiptext
+        font-size: 0.8em
+        top: 10px
+        visibility: hidden
+        min-width: 55px
+        width: auto
+        background-color: #7a7a7ad5
+        color: #d8c8c3
+        text-align: center
+        border-radius: 6px
+        padding: 5px 0
+        position: absolute
+        z-index: 1
+        transform: skew(-30deg)
+    &:hover 
+        .tooltiptext 
+            visibility: visible

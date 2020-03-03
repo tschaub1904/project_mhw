@@ -1,22 +1,17 @@
 <app-tabs>
     <app-tab [tabTitle]="'Info'">
-        <table>
-            <tr>
-                <td>Type</td>
-                <td>{{data.type}}</td>
-            </tr>
-            <tr>
-                <td>Rarity</td>
-                <td>{{data.rarity}}</td>
-            </tr>
-            <tr>
-                <td>Attack</td>
-                <td>{{data.attack.display}}</td>
-            </tr>
-            <tr>
-                <td>Slots</td>
-            </tr>
-            <tr>
+
+            <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
+            <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
+            <app-item-info [label]="'Attack'">{{data.attack.display}}</app-item-info>
+            <app-item-info [label]="'Slots'">
+                <app-slot [slots]="data.slots">
+                </app-slot>
+            </app-item-info>
+            <app-item-info [label]="'Elemental Damage'">
+                <app-elemental-damage [dmgs]="data.elements"></app-elemental-damage>
+            </app-item-info>
+            <!-- <tr>
                 <td [attr.rowspan]="data.elements.length">Element</td>
                 <td>
                     <table>
@@ -31,8 +26,8 @@
                         </tr>
                     </table>
                 </td>
-            </tr>
-        </table>
+            </tr> -->
+
     </app-tab>
     <app-tab [tabTitle]="'Crafting'">
         <table>
@@ -49,5 +44,13 @@
                 <td>{{data.crafting.previous}}</td>
             </tr>
         </table>
+    </app-tab>
+    <app-tab *ngIf="data.durability" [tabTitle]="'Sharpness'">
+        <app-sharpness [sharpnessLevels]="data.durability"></app-sharpness>
+
+        <!-- <app-tabs>
+            <app-tab *ngFor="let item of data.durability; index as handiNumber;" [tabTitle]="'Handicraft ' + addOne(handiNumber)">
+            </app-tab>
+        </app-tabs> -->
     </app-tab>
 </app-tabs>

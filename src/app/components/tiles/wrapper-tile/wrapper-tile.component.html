@@ -1,11 +1,10 @@
-<div class="title">
-  <span>{{tileIndex}} - {{item.data.name}}</span>
-    <div (click)="emitter.emit('close');" id="close-button-div">
-      <div class="close-button-cross1">
-        <div class="close-button-cross2"></div>
-      </div>
+<!-- <div (drop)="onDrop()" (dragover)="$event.preventDefault()" (dragover)="onDragEnter()" (dragleave)="onDragLeave()"[class.outerBorder]="isCovered"> -->
+  <div class="title" (dragstart)="onDragStart()" draggable="true">
+    <span>{{ item.data.name }}</span>
+    <div (click)="emitter.emit('close');" class="close-button">
+      <span>x</span>
     </div>
-</div>
-<div class="content">
-  <ng-template appTileHost></ng-template>
-</div>
+  </div>
+  <div class="content">
+    <ng-template appTileHost></ng-template>
+  </div>

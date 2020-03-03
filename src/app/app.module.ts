@@ -27,6 +27,11 @@ import { ItemTileComponent } from './components/tiles/item-tile/item-tile.compon
 import { TabsComponent } from './components/tabs/tabs/tabs.component';
 import { TabComponent } from './components/tabs/tab/tab.component';
 import { CollapsibleComponent } from './components/collapsible/collapsible.component';
+import { ItemInfoComponent } from './components/item-info/item-info.component';
+import { SlotComponent } from './components/details/slot/slot.component';
+import { ElementalDamageComponent } from './components/details/elemental-damage/elemental-damage.component';
+import { SharpnessComponent } from './components/sharpness/sharpness.component';
+import { NumberRangeComponent } from './components/inputs/number-range/number-range.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -62,6 +67,11 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     TabsComponent,
     TabComponent,
     CollapsibleComponent,
+    ItemInfoComponent,
+    SlotComponent,
+    ElementalDamageComponent,
+    SharpnessComponent,
+    NumberRangeComponent,
   ],
   imports: [
     HttpClientModule,
