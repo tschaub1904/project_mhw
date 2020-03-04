@@ -3,6 +3,7 @@
         <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
         <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
         <app-item-info [label]="'Attack'">{{data.attack.display}}</app-item-info>
+        <app-item-info [label]="'Damage Type'">{{data.damageType}}</app-item-info>
         <app-item-info [label]="'Slots'">
             <app-slot [slots]="data.slots">
             </app-slot>
@@ -10,6 +11,12 @@
         <app-item-info *ngIf="data.elements.length" [label]="'Elemental Damage'">
             <app-elemental-damage [dmgs]="data.elements"></app-elemental-damage>
         </app-item-info>
+        <app-item-info  [label]="'Elderseal'">
+            <div *ngIf="data.elderseal">{{data.elderseal}}</div>
+            <div *ngIf="!data.elderseal">none</div>
+        </app-item-info>
+        <app-item-info *ngIf="data.attribute && data.attribute.affinity"  [label]="'Affinity'">{{data.attribute.affinity}}%</app-item-info>
+        <app-item-info *ngIf="data.attribute && data.attribute.defense" [label]="'Defense Bonus'">{{data.attribute.defense}}</app-item-info>
     </app-tab>
     <app-tab [tabTitle]="'Crafting'">
         <app-item-info [label]="'Craftable'">
