@@ -1,6 +1,5 @@
 import { ElementRef, QueryList, Injectable } from "@angular/core";
 import { tileElement } from '../interfaces/tileElement';
-import { from } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
