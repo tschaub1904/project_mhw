@@ -6,6 +6,7 @@ import { MonsterTileComponent } from '../components/tiles/monster-tile/monster-t
 import { ArmorTileComponent } from '../components/tiles/armor-tile/armor-tile.component';
 import { WeaponTileComponent } from '../components/tiles/weapon-tile/weapon-tile.component';
 import { SkillTileComponent } from '../components/tiles/skill-tile/skill-tile.component';
+import { ItemTileComponent } from '../components/tiles/item-tile/item-tile.component';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,8 @@ export class SearchResultService {
     monsters: MonsterTileComponent,
     armor: ArmorTileComponent,
     weapons: WeaponTileComponent,
-    skills: SkillTileComponent
+    skills: SkillTileComponent,
+    items: ItemTileComponent
   }
 
   public addResult(result: any) {

@@ -5,7 +5,10 @@
     </tr>
     <tr *ngFor="let material of craftingMaterials">
         <td class="craftingQuantity">{{material.quantity}}</td>
-        <td class="craftingName" [class]="'rarity' + material.item.rarity">{{material.item.name}}</td>
+        <td class="craftingName" [class]="'rarity' + material.item.rarity">
+            <span [appClickSearch]="{ id: material.item.id, name: material.item.name, category: 'items' }"
+                appHoverHighlight>{{material.item.name}}</span>
+        </td>
     </tr>
 </table>
 

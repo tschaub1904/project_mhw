@@ -10,7 +10,7 @@ export class ClickSearchDirective {
   @Input('appClickSearch') data: any;
 
   constructor(private to: TileOrganizer, private getItemService: GetItemService, private searchResultService: SearchResultService) {  }
-
+  
   @HostListener('click') onClick() {
     let id = `${this.data.id}_${this.data.name}`
     let tileIndex = this.to.getTileIndex(id)
@@ -18,8 +18,9 @@ export class ClickSearchDirective {
       this.to.moveTile(tileIndex, 0)
       return;
     }
-    this.getItemService.getItem(this.data.id, "weapons").subscribe(data => {
-      this.searchResultService.addResult({ category: "weapons", data: data });
+
+    this.getItemService.getItem(this.data.id, this.data.category).subscribe(data => {
+      this.searchResultService.addResult({ category: this.data.category , data: data });
     });
   }
 }

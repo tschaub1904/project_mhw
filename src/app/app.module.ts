@@ -44,7 +44,8 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     MonsterTileComponent,
     ArmorTileComponent,
     WeaponTileComponent,
-    SkillTileComponent
+    SkillTileComponent,
+    ItemTileComponent
   ],
   declarations: [
     AppComponent,
