@@ -10,7 +10,6 @@ export class HoverHighlightDirective implements OnInit {
 
   ngOnInit(): void {
     this.ref.nativeElement.classList.add('app-highlight');
-    console.log(this.highlightColor);
   }
 
   @HostListener('mouseenter') onMouseEnter() {
