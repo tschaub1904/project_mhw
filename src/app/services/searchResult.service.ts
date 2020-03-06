@@ -1,6 +1,5 @@
 import { Injectable, Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Charm } from '../models/charm';
 import { CharmsTileComponent } from '../components/tiles/charms-tile/charms-tile.component';
 import { MonsterTileComponent } from '../components/tiles/monster-tile/monster-tile.component';
 import { ArmorTileComponent } from '../components/tiles/armor-tile/armor-tile.component';

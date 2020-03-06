@@ -15,7 +15,10 @@
     right: -500px
     transition: left ease-in .2s, top ease-in .2s
 
-    &.someClass
+    &.isDragging
+        filter: brightness(.75)
+        opacity: .75
+    &:not(.isDragging).isCovered
         -webkit-filter: brightness(1.2)
         filter: brightness(1.2)
         box-shadow:#055968ff 0px 0px 5px
@@ -32,8 +35,8 @@
 
 .title
     padding: 8px
-    padding-bottom: 6px
-    cursor: grab
+    padding-bottom: 10px
+    display: flex
 
 .close-button
     width: 22px
@@ -47,3 +50,15 @@
     &:hover
         filter: brightness(2)
         background-color: #ffffff22
+
+.icon
+    height: 50px
+    width: 50px
+    margin-right: 16px
+
+.description
+    cursor: grab
+    flex-grow: 1
+
+.small
+    font-size: .75em

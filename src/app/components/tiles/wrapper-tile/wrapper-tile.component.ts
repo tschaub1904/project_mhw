@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy, HostListener, HostBinding, ChangeDetectorRef, OnChanges } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy, HostListener, HostBinding, ChangeDetectorRef, OnChanges, Host } from '@angular/core';
 import { TileHostDirective } from 'src/app/directives/tile-host.directive';
 import { Charm } from 'src/app/models/charm';
 import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
@@ -21,7 +21,8 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 	eventDepth: number = 0;
 
 	@ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
-	@HostBinding('class.someClass') isCovered: boolean = false;
+	@HostBinding('class.isCovered') isCovered: boolean = false;
+	@HostBinding('class.isDragging') isDragging: boolean = false;
 
 	constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer, private cd: ChangeDetectorRef) {
 	}
@@ -55,8 +56,11 @@ export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
 	// }
 	
 	onDragStart() {
+		this.isDragging = true;
 		this.tileOrganizer.setDraggedTileIndex(this.tileId);
 	}
+
+	@HostListener('dragend') onDragEnd() { this.isDragging = false; }
 
 	@HostListener('dragenter', ["$event"])
 	onDragEnter(event: Event) {
