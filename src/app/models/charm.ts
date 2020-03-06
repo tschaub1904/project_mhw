@@ -2,6 +2,7 @@ import { SkillRank } from 'src/app/models/skill';
 import { CraftingCost } from 'src/app/models/dataTypes/craftingCost'
 
 export interface Charm {
+    discriminator: 'charm';
     id: number,
     slug: string,
     name: string,

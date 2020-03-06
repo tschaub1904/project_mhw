@@ -35,6 +35,7 @@ import { NumberRangeComponent } from './components/inputs/number-range/number-ra
 import { CraftingMaterialComponent } from './components/crafting-material/crafting-material.component';
 import { ClickSearchDirective } from './directives/click-search.directive';
 import { HoverHighlightDirective } from './directives/hover-highlight.directive';
+import { LoadoutComponent } from './components/loadout/loadout.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -45,7 +46,8 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     ArmorTileComponent,
     WeaponTileComponent,
     SkillTileComponent,
-    ItemTileComponent
+    ItemTileComponent,
+    LoadoutComponent
   ],
   declarations: [
     AppComponent,
@@ -79,6 +81,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     CraftingMaterialComponent,
     ClickSearchDirective,
     HoverHighlightDirective,
+    LoadoutComponent,
   ],
   imports: [
     HttpClientModule,

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TileComponent } from 'src/app/interfaces/tileInterface';
 import { GetItemService } from 'src/app/services/getItem.service';
 import { Weapon } from 'src/app/models/weapon';
-import { SearchResultService } from 'src/app/services/searchResult.service';
+import { TileFactoryService } from 'src/app/services/tileFactory.service';
 import { TileOrganizer } from 'src/app/services/tileOrganizer.service';
 
 @Component({
