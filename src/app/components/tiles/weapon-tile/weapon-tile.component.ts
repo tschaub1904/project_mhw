@@ -15,38 +15,33 @@ export class WeaponTileComponent implements OnInit, TileComponent {
   weaponBranchNames: string[] = [];
   weaponPreviousName: string;
 
-  constructor(private getItemService: GetItemService, private searchResultService: SearchResultService, private tileOrganizer: TileOrganizer) { }
+  constructor(private getItemService: GetItemService) { }
 
   ngOnInit() {
     this.data.crafting.branches.forEach(weaponId => {
-      this.getWeaponName((name: string) => {this.weaponBranchNames.push(name)}, weaponId)
+      this.getWeaponName((name: string) => { this.weaponBranchNames.push(name) }, weaponId)
     });
 
-    if(this.data.crafting.previous){
-      this.getWeaponName((name: string) => {this.weaponPreviousName = name}, this.data.crafting.previous)
+    if (this.data.crafting.previous) {
+      this.getWeaponName((name: string) => { this.weaponPreviousName = name }, this.data.crafting.previous)
     }
   }
 
-  addOne(index) {
-    return index + 1
-  }
-
-  getWeaponName(callback, id: number){
-    this.getItemService.getItem<Weapon>(id, 'weapons').subscribe(data =>{
+  getWeaponName(callback, id: number) {
+    this.getItemService.getItem<Weapon>(id, 'weapons').subscribe(data => {
       callback(data.name)
     });
   }
 
-  onClick(weaponId: number, weaponName: string){
-    let id = `${weaponId}_${weaponName}`
-    let tileIndex = this.tileOrganizer.getTileIndex(id)
-    if (tileIndex >= 0) {
-      this.tileOrganizer.moveTile(tileIndex, 0)
-      return;
-    }
-    this.getItemService.getItem(weaponId, "weapons").subscribe(data => 
-      {
-        this.searchResultService.addResult({ category: "weapons", data: data });
-      });
-  }
+  // onClick(weaponId: number, weaponName: string) {
+  //   // let id = `${weaponId}_${weaponName}`
+  //   // let tileIndex = this.tileOrganizer.getTileIndex(id)
+  //   // if (tileIndex >= 0) {
+  //   //   this.tileOrganizer.moveTile(tileIndex, 0)
+  //   //   return;
+  //   // }
+  //   // this.getItemService.getItem(weaponId, "weapons").subscribe(data => {
+  //   //   this.searchResultService.addResult({ category: "weapons", data: data });
+  //   // });
+  // }
 }

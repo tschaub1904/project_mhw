@@ -23,13 +23,13 @@
             {{data.crafting.craftable == true ? "Yes" : "No"}}
         </app-item-info>
         <app-item-info *ngIf="data.crafting.previous" [label]="'Previous Weapon'">
-            <div class="clickable" (click)="onClick(data.crafting.previous, weaponPreviousName)">
-                {{weaponPreviousName}}
-            </div>
+            <div [appClickSearch]="{ id: data.crafting.previous, name: weaponPreviousName, category: 'weapon' }" appHoverHighlight>{{ weaponPreviousName }}</div>
         </app-item-info>
         <app-item-info *ngIf="data.crafting.branches.length" [label]="'Next Weapon'">
-            <div class="clickable" *ngFor="let branch of weaponBranchNames; index as branchIndex"
-                (click)="onClick(data.crafting.branches[branchIndex], branch)">
+            <div 
+                *ngFor="let branch of weaponBranchNames; index as branchIndex" 
+                [appClickSearch]="{ id: data.crafting.branches[branchIndex], name: branch, category: 'weapon' }"
+                appHoverHighlight>
                 {{branch}}
             </div>
         </app-item-info>
