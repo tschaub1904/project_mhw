@@ -15,7 +15,10 @@
     right: -500px
     transition: left ease-in .2s, top ease-in .2s
 
-    &.someClass
+    &.isDragging
+        filter: brightness(.75)
+        opacity: .75
+    &:not(.isDragging).isCovered
         -webkit-filter: brightness(1.2)
         filter: brightness(1.2)
         box-shadow:#055968ff 0px 0px 5px
