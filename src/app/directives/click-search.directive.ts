@@ -1,7 +1,7 @@
 import { Directive, Input, HostListener } from '@angular/core';
 import { TileOrganizer } from '../services/tileOrganizer.service';
 import { GetItemService } from '../services/getItem.service';
-import { SearchResultService } from '../services/searchResult.service';
+import { TileFactoryService } from '../services/tileFactory.service';
 
 @Directive({
   selector: '[appClickSearch]'
@@ -9,7 +9,7 @@ import { SearchResultService } from '../services/searchResult.service';
 export class ClickSearchDirective {
   @Input('appClickSearch') data: any;
 
-  constructor(private to: TileOrganizer, private getItemService: GetItemService, private searchResultService: SearchResultService) {  }
+  constructor(private to: TileOrganizer, private getItemService: GetItemService, private searchResultService: TileFactoryService) {  }
   
   @HostListener('click') onClick() {
     let id = `${this.data.id}_${this.data.name}`
@@ -20,7 +20,7 @@ export class ClickSearchDirective {
     }
 
     this.getItemService.getItem(this.data.id, this.data.category).subscribe(data => {
-      this.searchResultService.addResult({ category: this.data.category , data: data });
+      this.searchResultService.addTile({ category: this.data.category , data: data });
     });
   }
 }

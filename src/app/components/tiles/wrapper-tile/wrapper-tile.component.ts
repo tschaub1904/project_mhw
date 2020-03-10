@@ -3,7 +3,7 @@ import { TileHostDirective } from 'src/app/directives/tile-host.directive';
 import { Charm } from 'src/app/models/charm';
 import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
 import { TileComponent } from 'src/app/interfaces/tileInterface';
-import { TileItem } from 'src/app/services/searchResult.service';
+import { TileItem } from 'src/app/services/tileFactory.service';
 import { TileAreaComponent } from '../../tile-area/tile-area.component';
 import { TileOrganizer } from 'src/app/services/tileOrganizer.service';
 
