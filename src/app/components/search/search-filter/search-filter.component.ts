@@ -8,7 +8,7 @@ import { SearchComponent } from '../search/search.component';
   styleUrls: ['./search-filter.component.sass']
 })
 export class SearchFilterComponent implements OnInit {
-  itemList: string[][] = [ ["All", null],["Armor","armor"], ["Charm", "charms"], ["Monster", "monsters"], ["Weapon", "weapons"]];
+  itemList: string[][] = [ ["All", null],["Armor","armor"], ["Charm", "charms"], ["Monster", "monsters"], ["Weapon", "weapons"], ["Item","items"]];
   private delay = 500;
   private timeout: number;
   private lastCategory: string;
