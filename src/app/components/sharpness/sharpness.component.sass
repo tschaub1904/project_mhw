@@ -7,29 +7,32 @@
         padding: 5px
         height: 15px
         background: #424242
+        transform: skew(30deg)
+        width: 96%
     div
         height: 15px
         float: left
         background: #424242
     .sharpness-red
-        background-color: #d40000 
+        background-color: #a92e38
     .sharpness-orange
-        background-color: #ff5e00 
+        background-color: #c75d37 
     .sharpness-yellow
-        background-color: #fffb00 
+        background-color: #b9a72d 
     .sharpness-green
-        background-color: #12d400 
+        background-color: #64a018 
     .sharpness-blue
-        background-color: #0e00d4 
+        background-color: #416fd7 
     .sharpness-white
-        background-color: #ffffff 
+        background-color: #d4d1ce 
     .sharpness-purple
-        background-color: #7f00d4 
+        background-color: #834ee5 
         
 
 .tooltip
     position: relative
     display: inline-block 
+    transition: width ease .075s
     .tooltiptext
         font-size: 0.8em
         top: 10px
@@ -43,6 +46,7 @@
         padding: 5px 0
         position: absolute
         z-index: 1
+        transform: skew(-30deg)
     &:hover 
         .tooltiptext 
             visibility: visible

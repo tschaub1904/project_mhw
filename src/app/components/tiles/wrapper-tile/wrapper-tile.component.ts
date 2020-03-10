@@ -1,79 +1,96 @@
-import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input, EventEmitter, Output, ElementRef, AfterViewInit, OnDestroy, HostListener, HostBinding, ChangeDetectorRef, OnChanges, Host } from '@angular/core';
 import { TileHostDirective } from 'src/app/directives/tile-host.directive';
 import { Charm } from 'src/app/models/charm';
 import { CharmsTileComponent } from '../charms-tile/charms-tile.component';
 import { TileComponent } from 'src/app/interfaces/tileInterface';
-import { TileItem } from 'src/app/services/searchResult.service';
+import { TileItem } from 'src/app/services/tileFactory.service';
 import { TileAreaComponent } from '../../tile-area/tile-area.component';
 import { TileOrganizer } from 'src/app/services/tileOrganizer.service';
 
 @Component({
-  selector: 'app-wrapper-tile',
-  templateUrl: './wrapper-tile.component.html',
-  styleUrls: ['./wrapper-tile.component.sass']
+	selector: 'app-wrapper-tile',
+	templateUrl: './wrapper-tile.component.html',
+	styleUrls: ['./wrapper-tile.component.sass']
 })
 export class WrapperTileComponent implements OnInit, AfterViewInit, OnDestroy {
-  
-  @Input() item: TileItem;
-  @Input() tileIndex: number;
-  @Output() emitter = new EventEmitter();
-  tileId: string;
-  isCovered: boolean;
 
-  @ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
+	@Input() item: TileItem;
+	@Input() tileIndex: number;
+	@Output() emitter = new EventEmitter();
+	tileId: string;
+	eventDepth: number = 0;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer) { 
-  }
+	@ViewChild(TileHostDirective, { static: true }) tileHost: TileHostDirective;
+	@HostBinding('class.isCovered') isCovered: boolean = false;
+	@HostBinding('class.isDragging') isDragging: boolean = false;
 
-  ngOnInit() {
-    this.loadComponent();
-    this.tileId = `${this.item.data.id}_${this.item.data.name}`;
-  }
+	constructor(private componentFactoryResolver: ComponentFactoryResolver, private ref: ElementRef, private tileArea: TileAreaComponent, private tileOrganizer: TileOrganizer, private cd: ChangeDetectorRef) {
+	}
 
-  ngAfterViewInit() {
-    console.log("Create Wrapper", this.ref);
-    this.tileOrganizer.addNew(this.ref, this.tileId);
-  }
-  ngOnDestroy() {
-    console.log("Destroy Wrapper", this.ref);
-    this.tileOrganizer.remove(this.tileId);
-  }
-  loadComponent() {
-    const componentFactory =
-      this.componentFactoryResolver.resolveComponentFactory(this.item.component);
+	ngOnInit() {
+		this.loadComponent();
+		this.tileId = `${this.item.data.id}_${this.item.data.name}`;
+	}
 
-    const viewContainerRef = this.tileHost.viewContainerRef;
+	ngAfterViewInit() {
+		this.tileOrganizer.addNew(this.ref, `${this.item.data.id}_${this.item.data.name}`);
+	}
+	ngOnDestroy() {
+		this.tileOrganizer.remove(`${this.item.data.id}_${this.item.data.name}`);
+	}
+	loadComponent() {
+		const componentFactory =
+			this.componentFactoryResolver.resolveComponentFactory(this.item.component);
 
-    const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<TileComponent>componentRef.instance).data = this.item.data;
-  }
+		const viewContainerRef = this.tileHost.viewContainerRef;
 
-  onDrag(event: DragEvent){
-    // console.log("onDrag(): ", event.clientX, event.clientY)
-  }
+		const componentRef = viewContainerRef.createComponent(componentFactory);
+		(<TileComponent>componentRef.instance).data = this.item.data;
+	}
 
-  onDragStart(){
-    this.tileOrganizer.setDraggedTileIndex(this.tileId);
-    // console.log("onDragStart(): ", this.tileId);
-  }
+	// @HostListener('drag', ["$event"])
+	// onDrag(event: any) {
+		
+	// 	this.cd.detach();
+	// 	// console.log("onDrag(): ", event);
+	// }
+	
+	onDragStart() {
+		this.isDragging = true;
+		this.tileOrganizer.setDraggedTileIndex(this.tileId);
+	}
 
-  onDragEnter() {
-    // console.log("onDragEnter()")
-    this.isCovered = true;
-  }
+	@HostListener('dragend') onDragEnd() { this.isDragging = false; }
 
-  onDragLeave() {
-    // console.log("onDragLeave()")
+	@HostListener('dragenter', ["$event"])
+	onDragEnter(event: Event) {
+		event.stopPropagation();
+		event.preventDefault();
 
-    this.isCovered = false;
+		this.eventDepth++;
+		this.isCovered = true;
+	}
+	@HostListener('dragleave', ["$event"])
+	onDragLeave(event: Event) {
+		event.preventDefault();
+		event.stopPropagation();
 
-  }
+		this.eventDepth--;
+		if (this.eventDepth == 0) 
+			this.isCovered = false;
+		
+	}
+	@HostListener('dragover', ["$event"])
+	onDragOver(event) {
+		event.preventDefault();
+		event.stopPropagation();
+	}
+	@HostListener('drop')
+	onDrop() {
+		this.eventDepth = 0;
+		this.isCovered = false;
 
-  onDrop(){
-    // console.log("onDrop(): ", this.tileId);
-    this.isCovered = false;
-
-    this.tileOrganizer.dropTile(this.tileId);
-  }
+		this.tileOrganizer.dropTile(this.tileId);
+	}
 
 }

@@ -1,9 +1,10 @@
-<div [style.width.px]="sharpnessWidth" class="sharpness-bar"> 
-    <div [style.width.px]="red" class="sharpness-red tooltip"><div class="tooltiptext">{{sharpness.red}} Hits</div></div>
-    <div [style.width.px]="orange" class="sharpness-orange tooltip"><div class="tooltiptext">{{sharpness.orange}} Hits</div></div>
-    <div [style.width.px]="yellow" class="sharpness-yellow tooltip"><div class="tooltiptext">{{sharpness.yellow}} Hits</div></div>
-    <div [style.width.px]="green" class="sharpness-green tooltip"><div class="tooltiptext">{{sharpness.green}} Hits</div></div>
-    <div [style.width.px]="blue" class="sharpness-blue tooltip"><div class="tooltiptext">{{sharpness.blue}} Hits</div></div>
-    <div [style.width.px]="white" class="sharpness-white tooltip"><div class="tooltiptext">{{sharpness.white}} Hits</div></div>
-    <div [style.width.px]="purple" class="sharpness-purple tooltip"><div class="tooltiptext">{{sharpness.purple}} Hits</div></div>
+<span>Handicraft Level: </span><app-number-range [min]="0" [max]="5" (newValue)="setHandicraftLevel($event)"></app-number-range>
+<div class="sharpness-bar"> 
+    <div [style.width.%]="sharpness.red / 4" class="sharpness-red tooltip"><div class="tooltiptext">{{sharpness.red}} Hits</div></div>
+    <div [style.width.%]="sharpness.orange / 4" class="sharpness-orange tooltip"><div class="tooltiptext">{{sharpness.orange}} Hits</div></div>
+    <div [style.width.%]="sharpness.yellow / 4" class="sharpness-yellow tooltip"><div class="tooltiptext">{{sharpness.yellow}} Hits</div></div>
+    <div [style.width.%]="sharpness.green / 4" class="sharpness-green tooltip"><div class="tooltiptext">{{sharpness.green}} Hits</div></div>
+    <div [style.width.%]="sharpness.blue / 4" class="sharpness-blue tooltip"><div class="tooltiptext">{{sharpness.blue}} Hits</div></div>
+    <div [style.width.%]="sharpness.white / 4" class="sharpness-white tooltip"><div class="tooltiptext">{{sharpness.white}} Hits</div></div>
+    <div *ngIf="sharpness.purple" [style.width.%]="sharpness.purple / 4" class="sharpness-purple tooltip"><div class="tooltiptext" *ngIf="sharpness.purple != 0">{{sharpness.purple}} Hits</div></div>
 </div>

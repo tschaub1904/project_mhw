@@ -3,7 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { SearchService } from 'src/app/services/search.service';
 import { SearchObject } from 'src/app/models/search';
 import { GetItemService } from 'src/app/services/getItem.service';
-import { SearchResultService } from 'src/app/services/searchResult.service';
+import { TileFactoryService } from 'src/app/services/tileFactory.service';
 import { Charm } from 'src/app/models/charm';
 import { TileOrganizer } from 'src/app/services/tileOrganizer.service';
 
@@ -16,7 +16,7 @@ export class ResultListComponent implements OnInit {
 
   searchForm;
   @Input() searchResults: SearchObject[];
-  constructor(private getItemService: GetItemService, private resultService: SearchResultService, private tileOrganizer: TileOrganizer) {
+  constructor(private getItemService: GetItemService, private resultService: TileFactoryService, private tileOrganizer: TileOrganizer) {
     
   }
 
@@ -26,14 +26,13 @@ export class ResultListComponent implements OnInit {
   onClick(result: SearchObject){
     let id = `${result.id}_${result.name}`
     let tileIndex = this.tileOrganizer.getTileIndex(id)
-    console.log(tileIndex)
     if (tileIndex >= 0) {
       this.tileOrganizer.moveTile(tileIndex, 0)
       return;
     }
     this.getItemService.getItem(result.id, result.category).subscribe(data => 
       {
-        this.resultService.addResult({ category: result.category, data: data });
+        this.resultService.addTile({ category: result.category, data: data });
       });
   }
 

@@ -1,0 +1,8 @@
+<input type="text" 
+  (keyup.arrowup)="add(1)" 
+  (keyup.arrowdown)="add(-1)" 
+  readonly
+  [value]="value"
+  >
+<button (click)="add(1)">^</button>
+<button (click)="add(-1)">v</button>

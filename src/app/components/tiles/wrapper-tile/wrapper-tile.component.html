@@ -1,6 +1,10 @@
-<div (drop)="onDrop()" (dragover)="$event.preventDefault()" (dragover)="onDragEnter()" (dragleave)="onDragLeave()"[class.outerBorder]="isCovered">
-  <div class="title" (dragstart)="onDragStart()" (drag)="onDrag($event)" draggable="true">
-    <span>{{ item.data.name }}</span>
+<!-- <div (drop)="onDrop()" (dragover)="$event.preventDefault()" (dragover)="onDragEnter()" (dragleave)="onDragLeave()"[class.outerBorder]="isCovered"> -->
+  <div class="title">
+    <img class="icon" src="//localhost:8000/api/images/bla/blub" draggable="false">
+    <div class="description" (dragstart)="onDragStart()" draggable="true">
+      <span><b>{{ item.data.name }}</b></span><br>
+      <span class="small">{{ item.data.type }}</span>
+    </div>
     <div (click)="emitter.emit('close');" class="close-button">
       <span>x</span>
     </div>
@@ -8,4 +12,3 @@
   <div class="content">
     <ng-template appTileHost></ng-template>
   </div>
-</div>

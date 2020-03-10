@@ -1,55 +1,41 @@
 <app-tabs>
     <app-tab [tabTitle]="'Info'">
-
-            <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
-            <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
-            <app-item-info [label]="'Attack'">{{data.attack.display}}</app-item-info>
-            <app-item-info [label]="'Slots'">
-                <app-slot [slots]="data.slots">
-                </app-slot>
-            </app-item-info>
-            <app-item-info [label]="'Elemental Damage'">
-                <app-elemental-damage [dmgs]="data.elements"></app-elemental-damage>
-            </app-item-info>
-            <!-- <tr>
-                <td [attr.rowspan]="data.elements.length">Element</td>
-                <td>
-                    <table>
-                        <tr *ngFor="let element of data.elements">
-                            <img style="width: 10px; height: 10px;">
-                            <span class="hiddenElement" *ngIf="element.hidden">
-                                ({{element.damage}})
-                            </span>
-                            <span *ngIf="!element.hidden">
-                                {{element.damage}}
-                            </span>
-                        </tr>
-                    </table>
-                </td>
-            </tr> -->
-
+        <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
+        <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
+        <app-item-info [label]="'Attack'">{{data.attack.display}}</app-item-info>
+        <app-item-info [label]="'Damage Type'">{{data.damageType}}</app-item-info>
+        <app-item-info [label]="'Slots'">
+            <app-slot [slots]="data.slots">
+            </app-slot>
+        </app-item-info>
+        <app-item-info *ngIf="data.elements.length" [label]="'Elemental Damage'">
+            <app-elemental-damage [dmgs]="data.elements"></app-elemental-damage>
+        </app-item-info>
+        <app-item-info  [label]="'Elderseal'">
+            <div *ngIf="data.elderseal">{{data.elderseal}}</div>
+            <div *ngIf="!data.elderseal">none</div>
+        </app-item-info>
+        <app-item-info *ngIf="data.attribute && data.attribute.affinity"  [label]="'Affinity'">{{data.attribute.affinity}}%</app-item-info>
+        <app-item-info *ngIf="data.attribute && data.attribute.defense" [label]="'Defense Bonus'">{{data.attribute.defense}}</app-item-info>
     </app-tab>
     <app-tab [tabTitle]="'Crafting'">
-        <table>
-            <tr>
-                <td>Craftable</td>
-                <td>{{data.crafting.craftable}}</td>
-            </tr>
-            <tr *ngIf="data.crafting.previous">
-                <td>Previous Weapon</td>
-                <td>{{data.crafting.previous}}</td>
-            </tr>
-            <tr>
-                <td>Next Weapon</td>
-                <td>{{data.crafting.previous}}</td>
-            </tr>
-        </table>
+        <app-item-info [label]="'Craftable'">
+            {{data.crafting.craftable == true ? "Yes" : "No"}}
+        </app-item-info>
+        <app-item-info *ngIf="data.crafting.previous" [label]="'Previous Weapon'">
+            <div [appClickSearch]="{ id: data.crafting.previous, name: weaponPreviousName, category: 'weapons' }" appHoverHighlight>{{ weaponPreviousName }}</div>
+        </app-item-info>
+        <app-item-info *ngIf="data.crafting.branches.length" [label]="'Next Weapon'">
+            <div 
+                *ngFor="let branch of weaponBranchNames; index as branchIndex" 
+                [appClickSearch]="{ id: data.crafting.branches[branchIndex], name: branch, category: 'weapons' }"
+                appHoverHighlight>
+                {{branch}}
+            </div>
+        </app-item-info>
+        <app-crafting-material [craftingMaterials]="data.crafting.craftingMaterials"></app-crafting-material>
     </app-tab>
-    <app-tab [tabTitle]="'Sharpness'">
-        <!-- <app-tabs>
-            <app-tab *ngFor="let item of data.durability; index as handiNumber;" [tabTitle]="'Handicraft ' + addOne(handiNumber)">
-                <app-sharpness  [sharpness]="item"></app-sharpness>
-            </app-tab>
-        </app-tabs> -->
+    <app-tab *ngIf="data.durability" [tabTitle]="'Sharpness'">
+        <app-sharpness [sharpnessLevels]="data.durability"></app-sharpness>
     </app-tab>
 </app-tabs>

@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit, HostListener, ElementRef } from '@angular/core';
-import { SearchResultService } from 'src/app/services/searchResult.service';
+import { TileFactoryService } from 'src/app/services/tileFactory.service';
 import { TileOrganizer } from 'src/app/services/tileOrganizer.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class TileAreaComponent implements OnInit, AfterViewInit {
   tileList: any[] = [];
   readonly baseHeight: number = 250;
   
-  constructor(private searchResults: SearchResultService, private ref: ElementRef, private tileOrganizer: TileOrganizer) { }
+  constructor(private searchResults: TileFactoryService, private ref: ElementRef, private tileOrganizer: TileOrganizer) { }
 
   ngOnInit() {
     this.searchResults.results.subscribe((data) => {
@@ -30,7 +30,7 @@ export class TileAreaComponent implements OnInit, AfterViewInit {
   }
 
   close(index) {
-    this.searchResults.removeResult(index);
+    this.searchResults.removeTile(index);
   }
 
 }

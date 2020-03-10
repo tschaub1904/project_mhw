@@ -7,34 +7,23 @@ import { WeaponSharpness } from 'src/app/models/stats/weaponStats';
   styleUrls: ['./sharpness.component.sass']
 })
 export class SharpnessComponent implements OnInit {
-  @Input() sharpness: WeaponSharpness
-  red: number;
-  orange: number;
-  yellow: number;
-  green: number;
-  blue: number;
-  white: number;
-  purple: number;
+  readonly maxSharpness: number = 400;
+  @Input() sharpnessLevels: WeaponSharpness[]
+  sharpness: WeaponSharpness;
+  handicraftLevel: number = 0;
+
   sharpnessWidth: number = 400;
-  divider: number = 1.5;
+  divider: number = 2;
 
-
-  constructor() {
-   }
+  constructor() { }
 
   ngOnInit() {
-    this.red = this.sharpness.red / this.divider;
-    this.orange = this.sharpness.orange / this.divider;
-    this.yellow = this.sharpness.yellow / this.divider;
-    this.green = this.sharpness.green / this.divider;
-    this.blue = this.sharpness.blue / this.divider;
-    this.white = this.sharpness.white / this.divider;
-    this.purple = this.sharpness.purple / this.divider;
+    this.sharpness = this.sharpnessLevels[0];
 
-    this.sharpnessWidth = this.sharpnessWidth / this.divider
-    // console.log(this.sharpness)
-    // console.log(this)
-
+    this.sharpnessWidth = this.sharpnessWidth / this.divider;
   }
 
+  setHandicraftLevel(event: any) {
+    this.sharpness = this.sharpnessLevels[event];
+  }
 }
