@@ -1,8 +1,24 @@
-<div *ngFor="let item of data">
-    <div>ID: {{item.id}}</div>
-    <div>Name: {{item.name}}</div>
-    <div>Description: {{item.description}}</div>
-    <div>Rarity: {{item.rarity}}</div>
-    <div>Carry Limit: {{item.carryLimit}}</div>
-    <div>Value: {{item.value}}</div>
-</div>
+<app-tabs>
+    <app-tab [tabTitle]="'Info'">
+        <app-item-info [label]="'Description'">{{data.description}}</app-item-info>
+        <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
+        <app-item-info [label]="'Carry Limit'">{{data.carryLimit}}</app-item-info>
+        <app-item-info [label]="'Value'">{{data.value}}</app-item-info>
+        <app-item-info [label]="'Dropped By'" >
+            <app-collapsible [collapsibleTitle]="'collaps'">
+                <div *ngFor="let monster of monsterList">
+                    <app-item-info [label]="'Name'">
+                        <div appHoverHighlight
+                            [appClickSearch]="{id: monster.monsterId, name: monster.monsterName, category: 'monsters'}">
+                            {{monster.monsterName}}
+                        </div>
+                    </app-item-info>
+                    <app-item-info [label]="'Rank'">
+                        {{monster.rank}}
+                    </app-item-info>
+                    <hr>
+                </div>
+            </app-collapsible>
+        </app-item-info>
+    </app-tab>
+</app-tabs>

@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 
-export interface tileElement {
+export interface TileElement {
     id: string,
     ref: ElementRef,
     height: number,

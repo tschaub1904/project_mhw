@@ -32,16 +32,4 @@ export class WeaponTileComponent implements OnInit, TileComponent {
       callback(data.name)
     });
   }
-
-  // onClick(weaponId: number, weaponName: string) {
-  //   // let id = `${weaponId}_${weaponName}`
-  //   // let tileIndex = this.tileOrganizer.getTileIndex(id)
-  //   // if (tileIndex >= 0) {
-  //   //   this.tileOrganizer.moveTile(tileIndex, 0)
-  //   //   return;
-  //   // }
-  //   // this.getItemService.getItem(weaponId, "weapons").subscribe(data => {
-  //   //   this.searchResultService.addResult({ category: "weapons", data: data });
-  //   // });
-  // }
 }
