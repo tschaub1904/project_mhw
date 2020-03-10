@@ -4,7 +4,7 @@
         <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
         <app-item-info [label]="'Carry Limit'">{{data.carryLimit}}</app-item-info>
         <app-item-info [label]="'Value'">{{data.value}}</app-item-info>
-        <app-item-info *ngIf="monsterList.length != 0" [label]="'Dropped By'" >
+        <app-item-info *ngIf="monsterList[0]" [label]="'Dropped By'" >
             <app-collapsible [collapsibleTitle]="'collaps'">
                 <div *ngFor="let monster of monsterList">
                     <app-item-info [label]="'Name'">
