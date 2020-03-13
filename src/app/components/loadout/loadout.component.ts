@@ -1,37 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { TileFactoryService } from 'src/app/services/tileFactory.service';
-import { Charm } from 'src/app/models/charm'
-import { Armor } from 'src/app/classes/armorClass';
+import { Component, OnInit } from "@angular/core";
+import { TileFactoryService } from "src/app/services/tileFactory.service";
+import { Charm } from "src/app/models/charm";
+import { Armor } from "src/app/classes/armor.class";
+import { Weapon } from "src/app/classes/weapon.class";
+import { Stats } from "src/app/interfaces/stats.interface";
+import { EquipmentLoadout } from "src/app/classes/equipmentLoadout.class";
 
 @Component({
-  selector: 'app-loadout',
-  templateUrl: './loadout.component.html',
-  styleUrls: ['./loadout.component.sass']
+  selector: "app-loadout",
+  templateUrl: "./loadout.component.html",
+  styleUrls: ["./loadout.component.sass"]
 })
 export class LoadoutComponent implements OnInit {
-  // equipmentList = [];
-  // head: Armor;
-  constructor(private tileFactory: TileFactoryService) { }
+  loadout: EquipmentLoadout = new EquipmentLoadout();
 
-  ngOnInit() {
+  constructor(private tileFactory: TileFactoryService) {}
+
+  ngOnInit() {}
+
+  showList(type: string, subtype?: string) {
+    console.log("type", this.types[type]);
+
+    this.tileFactory.getTileItem(type).forEach(element => {
+      let name = EquipmentLoadout.Types[type];
+      this.loadout.setItem<(typeof name)>(element);
+
+      console.log("type", this.types[type]);
+    });
   }
 
-  // showList(type: string) {
-  //   this.types[type]
-  //   this.tileFactory.getTileItem(type).forEach(element => {
-  //     this.types[type] = element;
-      
-  //     console.log("type", this.types[type])
-  //   });
-
-  //   let obj = this.tileFactory.getTileItem(type);
-  //   obj.forEach(element => {
-  //     console.log(typeof element)
-  //   });
-  // }
-
-  //  types = {
-  //   armor:  Armor,
-
-  // }
+  types = {
+    armor: Armor,
+    weapons: Weapon
+  };
 }
