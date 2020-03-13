@@ -41,26 +41,26 @@
         </div>
     </app-tab>
     <app-tab [tabTitle]="'Rewards'">
-        <div *ngFor="let reward of data.rewards">
-            <app-item-info [label]="'Item'">
-                <div appHoverHighlight
+        <div *ngFor="let reward of data.rewards" class="small">
+            <app-collapsible [collapsibleTitle]="reward.item.name">
+                <span appHoverHighlight class="small"
                     [appClickSearch]="{id: reward.item.id, name: reward.item.name, category: 'items'}">
-                    {{reward.item.name}}</div>
-            </app-item-info>
-            <table>
-                <th>Type</th>
-                <th>Rank</th>
-                <th>#</th>
-                <th>Chance</th>
-                <tr *ngFor="let condition of reward.conditions">
-                    <td >{{condition.type}}<span *ngIf="condition.subtype" class="small">({{condition.subtype}})</span></td>
-                    
-
-                    <td>{{condition.rank}}</td>
-                    <td>{{condition.quantity}}</td>
-                    <td>{{condition.chance}}</td>
-                </tr>
-            </table>
+                    Open in new tile</span>
+                <table class="item-list text center">
+                    <tr>
+                        <th style="width: 50%">Type</th>
+                        <th>Rank</th>
+                        <th>#</th>
+                        <th>Drop %</th>
+                    </tr>
+                    <tr *ngFor="let condition of reward.conditions">
+                        <td><b>{{condition.type}}</b><span *ngIf="condition.subtype" class="small"> ({{condition.subtype}})</span></td>
+                        <td>{{condition.rank}}</td>
+                        <td>{{condition.quantity}}</td>
+                        <td>{{condition.chance}}%</td>
+                    </tr>
+                </table>
+            </app-collapsible>
         </div>
     </app-tab>
 </app-tabs>
