@@ -20,7 +20,7 @@ export class ItemTileComponent implements OnInit, TileComponent {
 
   getMonsterList(id: number){
     this.itemMonsterService.getItemMonster(id).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.monsterList = data;
     });
   }
