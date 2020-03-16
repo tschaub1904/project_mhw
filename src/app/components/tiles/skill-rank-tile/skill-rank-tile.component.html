@@ -1,23 +1,24 @@
-<div>Skills (Skill Ranks)</div>
 <div *ngFor="let skillRank of skillRanks">
-    <div>Name: {{skillRank.skillName}}</div>
-    <div>Level: {{skillRank.level}}</div>
-    <div>Description: {{skillRank.description}}</div>
-    <div>Modifier:</div>
-    <div *ngIf="skillRank.modifiers.affinity">Affinity: {{skillRank.modifiers.affinity}}</div>
-    <div *ngIf="skillRank.modifiers.attack">Attack: {{skillRank.modifiers.attack}}</div>
-    <div *ngIf="skillRank.modifiers.damageFire">Damage Fire: {{skillRank.modifiers.damageFire}}</div>
-    <div *ngIf="skillRank.modifiers.damageWater">Damage Water: {{skillRank.modifiers.damageWater}}</div>
-    <div *ngIf="skillRank.modifiers.damageIce">Damage Ice: {{skillRank.modifiers.damageIce}}</div>
-    <div *ngIf="skillRank.modifiers.damageThunder">Damage Thunder: {{skillRank.modifiers.damageThunder}}</div>
-    <div *ngIf="skillRank.modifiers.damageDragon">Damage Dragon: {{skillRank.modifiers.damageDragon}}</div>
-    <div *ngIf="skillRank.modifiers.defense">Defense: {{skillRank.modifiers.defense}}</div>
-    <div *ngIf="skillRank.modifiers.health">Health: {{skillRank.modifiers.health}}</div>
-    <div *ngIf="skillRank.modifiers.sharpnessBonus">Sharpness Bonus: {{skillRank.modifiers.sharpnessBonus}}</div>
-    <div *ngIf="skillRank.modifiers.resistAll">Resist All: {{skillRank.modifiers.resistAll}}</div>
-    <div *ngIf="skillRank.modifiers.resistFire">Resist Fire: {{skillRank.modifiers.resistFire}}</div>
-    <div *ngIf="skillRank.modifiers.resistWater">Resist Water: {{skillRank.modifiers.resistWater}}</div>
-    <div *ngIf="skillRank.modifiers.resistIce">Resist Ice: {{skillRank.modifiers.resistIce}}</div>
-    <div *ngIf="skillRank.modifiers.resistThunder">Resist Thunder: {{skillRank.modifiers.resistThunder}}</div>
-    <div *ngIf="skillRank.modifiers.resistDragon">Resist Dragon: {{skillRank.modifiers.resistDragon}}</div>
+    <app-item-info [label]="'Name'">{{skillRank.skillName}}</app-item-info>
+    <app-item-info [label]="'Level'">{{skillRank.level}}</app-item-info>
+    <app-item-info [label]="'Description'">{{skillRank.description}}</app-item-info>
+    <app-item-info [label]="'Modifier'">
+        <div *ngIf="skillRank.modifiers.affinity">Affinity: {{skillRank.modifiers.affinity}}</div>
+        <div *ngIf="skillRank.modifiers.attack">Attack: {{skillRank.modifiers.attack}}</div>
+        <div *ngIf="skillRank.modifiers.damageFire">Damage Fire: {{skillRank.modifiers.damageFire}}</div>
+        <div *ngIf="skillRank.modifiers.damageWater">Damage Water: {{skillRank.modifiers.damageWater}}</div>
+        <div *ngIf="skillRank.modifiers.damageIce">Damage Ice: {{skillRank.modifiers.damageIce}}</div>
+        <div *ngIf="skillRank.modifiers.damageThunder">Damage Thunder: {{skillRank.modifiers.damageThunder}}</div>
+        <div *ngIf="skillRank.modifiers.damageDragon">Damage Dragon: {{skillRank.modifiers.damageDragon}}</div>
+        <div *ngIf="skillRank.modifiers.defense">Defense: {{skillRank.modifiers.defense}}</div>
+        <div *ngIf="skillRank.modifiers.health">Health: {{skillRank.modifiers.health}}</div>
+        <div *ngIf="skillRank.modifiers.sharpnessBonus">Sharpness Bonus: {{skillRank.modifiers.sharpnessBonus}}</div>
+        <div *ngIf="skillRank.modifiers.resistAll">Resist All: {{skillRank.modifiers.resistAll}}</div>
+        <div *ngIf="skillRank.modifiers.resistFire">Resist Fire: {{skillRank.modifiers.resistFire}}</div>
+        <div *ngIf="skillRank.modifiers.resistWater">Resist Water: {{skillRank.modifiers.resistWater}}</div>
+        <div *ngIf="skillRank.modifiers.resistIce">Resist Ice: {{skillRank.modifiers.resistIce}}</div>
+        <div *ngIf="skillRank.modifiers.resistThunder">Resist Thunder: {{skillRank.modifiers.resistThunder}}</div>
+        <div *ngIf="skillRank.modifiers.resistDragon">Resist Dragon: {{skillRank.modifiers.resistDragon}}</div>    
+    </app-item-info>
+    <hr>
 </div>

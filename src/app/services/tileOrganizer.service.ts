@@ -1,5 +1,5 @@
 import { ElementRef, QueryList, Injectable } from "@angular/core";
-import { tileElement } from '../interfaces/tileElement';
+import { TileElement } from '../interfaces/tileElement';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +11,7 @@ export class TileOrganizer {
     readonly baseWidth: number = 400;
     readonly baseHeight: number = 250;
     readonly margin: number = 10;
-    tiles: tileElement[] = [];
+    tiles: TileElement[] = [];
     private draggedTileIndex: number; 
 
     constructor() {
@@ -19,12 +19,12 @@ export class TileOrganizer {
 
     addNew(ref: ElementRef, id: string) {
 
-        let newTile: tileElement = { height: this.calcTileHeight(ref), id: id, ref: ref };
+        let newTile: TileElement = { height: this.calcTileHeight(ref), id: id, ref: ref };
         this.tiles.splice(0, 0, newTile);
         this.calcAll();
     }
 
-    add(tile: tileElement) {
+    add(tile: TileElement) {
         let insertColumn = this.getSmallestColumn();
         let tile_m = tile.height;
         let column_m = this.columnHeights[insertColumn];

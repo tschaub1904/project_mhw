@@ -1,15 +1,31 @@
-<div>
-  <div>Type:{{data.type}}</div>
-  <div>Rarity:{{data.rarity}}</div>
-  <div>Rank:{{data.rank}}</div>
-  <div>Defense:{{data.defense.base}}({{data.defense.max}})({{data.defense.augmented}})</div>
-  <div>Resistances: </div>
-  <ul>
-    <li>Fire:{{data.resistances.fire}}</li>
-    <li>Water:{{data.resistances.water}}</li>
-    <li>Ice:{{data.resistances.ice}}</li>
-    <li>Thunder:{{data.resistances.thunder}}</li>
-    <li>Dragon:{{data.resistances.dragon}}</li>
-  </ul>
-  <app-skill-rank-tile [skillRanks]="data.skills"></app-skill-rank-tile>
-</div>
+<app-tabs>
+  <app-tab [tabTitle]="'Info'">
+    <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
+    <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
+    <app-item-info [label]="'Rank'">{{data.rank}}</app-item-info>
+    <app-item-info [label]="'Defense'">
+      {{data.defense.base}}({{data.defense.max}})({{data.defense.augmented}})
+    </app-item-info>
+    <app-item-info [label]="'Resistances'">
+      <li>Fire:{{data.resistances.fire}}</li>
+      <li>Water:{{data.resistances.water}}</li>
+      <li>Ice:{{data.resistances.ice}}</li>
+      <li>Thunder:{{data.resistances.thunder}}</li>
+      <li>Dragon:{{data.resistances.dragon}}</li>
+    </app-item-info>
+    <app-skill-rank-tile [skillRanks]="data.skills"></app-skill-rank-tile>
+    <app-item-info [label]="'Slots'">
+      <app-slot [slots]="data.slots">
+      </app-slot>
+    </app-item-info>
+    <app-item-info [label]="'ArmorSet'">
+      <app-item-info [label]="'Name'">{{data.armorSet.name}}</app-item-info>
+      <app-item-info [label]="'Rank'">{{data.armorSet.rank}}</app-item-info>
+      <app-item-info [label]="'Pieces'">{{data.armorSet.pieces}}</app-item-info>
+    </app-item-info>
+    <!-- <app-item-info [label]="'Attributes'">{{data.attributes.requiredGender}}</app-item-info> -->
+  </app-tab>
+  <app-tab [tabTitle]="'Crafting'">
+    <app-crafting-material [craftingMaterials]="data.crafting.materials"></app-crafting-material>
+</app-tab>
+</app-tabs>
