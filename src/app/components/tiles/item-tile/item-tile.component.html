@@ -4,21 +4,13 @@
         <app-item-info [label]="'Rarity'">{{data.rarity}}</app-item-info>
         <app-item-info [label]="'Carry Limit'">{{data.carryLimit}}</app-item-info>
         <app-item-info [label]="'Value'">{{data.value}}</app-item-info>
-        <app-item-info [label]="'Dropped By'" >
-            <app-collapsible [collapsibleTitle]="'collaps'">
-                <div *ngFor="let monster of monsterList">
-                    <app-item-info [label]="'Name'">
-                        <div appHoverHighlight
-                            [appClickSearch]="{id: monster.monsterId, name: monster.monsterName, category: 'monsters'}">
-                            {{monster.monsterName}}
-                        </div>
-                    </app-item-info>
-                    <app-item-info [label]="'Rank'">
-                        {{monster.rank}}
-                    </app-item-info>
-                    <hr>
+        <app-collapsible *ngIf="monsterList[0]" [collapsibleTitle]="'Dropped By'">
+            <div *ngFor="let monster of monsterList">
+                <div appHoverHighlight
+                    [appClickSearch]="{id: monster.monsterId, name: monster.monsterName, category: 'monsters'}">
+                    {{monster.monsterName}}, <span class="small">{{monster.rank}}</span>
                 </div>
-            </app-collapsible>
-        </app-item-info>
+            </div>
+        </app-collapsible>
     </app-tab>
 </app-tabs>

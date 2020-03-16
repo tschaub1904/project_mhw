@@ -10,7 +10,7 @@ import { ItemMonster } from 'src/app/interfaces/itemMonsterInterface';
 })
 export class ItemTileComponent implements OnInit, TileComponent {
   @Input() data: any;
-  monsterList: ItemMonster[];
+  monsterList: ItemMonster[] = [];
 
   constructor(private itemMonsterService: GetItemMonsterService) { }
 
@@ -20,7 +20,7 @@ export class ItemTileComponent implements OnInit, TileComponent {
 
   getMonsterList(id: number){
     this.itemMonsterService.getItemMonster(id).subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.monsterList = data;
     });
   }

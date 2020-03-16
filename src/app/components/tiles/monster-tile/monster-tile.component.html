@@ -1,31 +1,13 @@
-<div>
-    <div>Type: {{data.type}}</div>
-    <div>Species: {{data.species}}</div>
-    <div>Description: {{data.description}}</div>
-    <div>Elements:</div>
-    <ul *ngFor="let element of data.elements">
-        <li>{{element}}</li>
-    </ul>
-    <div *ngFor="let ailment of data.ailments">
-        <div>Name: {{ailment.name}}</div>
-        <div>Description: {{ailment.description}}</div>
-        <div>Recovery:</div>
-        <ul *ngFor="let action of ailment.recovery.actions">
-            <li>{{action}}</li>
-        </ul>
-        <app-item-tile [data]="ailment.recovery.items"></app-item-tile>
-        <div>Protection</div>
-        <app-item-tile [data]="ailment.protection.items"></app-item-tile>
-        <app-skill-tile [skills]="ailment.protection.skills"></app-skill-tile>
-        <div>Locations:</div>
-        <div *ngFor="let location of data.locations">
-            <div>Name: {{location.name}}</div>
-            <div>Zone Count: {{location.zoneCount}}</div>
-            <div *ngFor="let camp of location.camps">
-                <div>Campname: {{camp.name}}</div>
-                <div>Zone: {{camp.zone}}</div>
-            </div>
-        </div>
+<app-tabs>
+    <app-tab [tabTitle]="'Info'">
+        <app-item-info [label]="'Type'">{{data.type}}</app-item-info>
+        <app-item-info [label]="'Species'">{{data.species}}</app-item-info>
+        <app-item-info [label]="'Description'">{{data.description}}</app-item-info>
+        <app-item-info [label]="'Elements'">
+            <ul *ngFor="let element of data.elements">
+                <li>{{element}}</li>
+            </ul>
+        </app-item-info>
         <div>Resistances:</div>
         <div *ngFor="let resistance of data.resistances">
             <div>Elements:</div>
@@ -42,16 +24,43 @@
             <div>Stars: {{weakness.stars}}</div>
             <div>Condition: {{weakness.condition}}</div>
         </div>
-        <div>Rewards:</div>
-        <div *ngFor="let reward of data.rewards">
-            <app-item-tile [data]="reward.item"></app-item-tile>
-            <div *ngFor="let condition of reward.conditions">
-            <div>Type: {{condition.type}}</div>
-            <div>Subtype: {{condition.subtype}}</div>
-            <div>Rank: {{condition.rank}}</div>
-            <div>Quantity: {{condition.quantity}}</div>
-            <div>Change: {{condition.change}}</div>
+    </app-tab>
+    <app-tab [tabTitle]="'Ailments'">
+        <div *ngFor="let ailment of data.ailments">
+            <app-item-info [label]="'Name'">{{ailment.name}}</app-item-info>
+        </div>
+    </app-tab>
+    <app-tab [tabTitle]="'Locations'">
+        <div *ngFor="let location of data.locations">
+            <div>Name: {{location.name}}</div>
+            <div>Zone Count: {{location.zoneCount}}</div>
+            <div *ngFor="let camp of location.camps">
+                <div>Campname: {{camp.name}}</div>
+                <div>Zone: {{camp.zone}}</div>
             </div>
         </div>
-    </div>
-</div>
+    </app-tab>
+    <app-tab [tabTitle]="'Rewards'">
+        <div *ngFor="let reward of data.rewards" class="small">
+            <app-collapsible [collapsibleTitle]="reward.item.name">
+                <span appHoverHighlight class="small"
+                    [appClickSearch]="{id: reward.item.id, name: reward.item.name, category: 'items'}">
+                    Open in new tile</span>
+                <table class="item-list text center">
+                    <tr>
+                        <th style="width: 50%">Type</th>
+                        <th>Rank</th>
+                        <th>#</th>
+                        <th>Drop %</th>
+                    </tr>
+                    <tr *ngFor="let condition of reward.conditions">
+                        <td><b>{{condition.type}}</b><span *ngIf="condition.subtype" class="small"> ({{condition.subtype}})</span></td>
+                        <td>{{condition.rank}}</td>
+                        <td>{{condition.quantity}}</td>
+                        <td>{{condition.chance}}%</td>
+                    </tr>
+                </table>
+            </app-collapsible>
+        </div>
+    </app-tab>
+</app-tabs>
