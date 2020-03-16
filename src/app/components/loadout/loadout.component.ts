@@ -1,9 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { TileFactoryService } from "src/app/services/tileFactory.service";
-import { Charm } from "src/app/models/charm";
-import { Armor } from "src/app/classes/armor.class";
-import { Weapon } from "src/app/classes/weapon.class";
-import { Stats } from "src/app/interfaces/stats.interface";
 import { EquipmentLoadout } from "src/app/classes/equipmentLoadout.class";
 
 @Component({
@@ -13,6 +9,8 @@ import { EquipmentLoadout } from "src/app/classes/equipmentLoadout.class";
 })
 export class LoadoutComponent implements OnInit {
 	loadout: EquipmentLoadout = new EquipmentLoadout();
+	items: any[] = [];
+	type: string;
 
 	constructor(private tileFactory: TileFactoryService) { }
 
@@ -20,17 +18,24 @@ export class LoadoutComponent implements OnInit {
 
 	showList(type: string, subtype?: string) {
 
-		let items = this.tileFactory.getTileItem(type, subtype);
+		this.items = this.tileFactory.getTileItem(type, subtype);
+		this.type = type;
 
-		if (items.length === 0)
+		if (this.items.length === 0)
 			return;
 
-		this.loadout.setItem(items[0], type);
+		this.loadout.setItem(this.items[0], type);
 
 		// items.forEach(element => {
 		//   this.loadout.setItem(element, type);
 		// });
 
+		this.loadout.printLoadout();
+	}
+
+	setSlot(event: any){
+		console.log("setSLot ",event)
+		this.loadout.setItem(event, this.type);
 		this.loadout.printLoadout();
 	}
 }

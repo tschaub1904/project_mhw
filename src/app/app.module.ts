@@ -36,6 +36,7 @@ import { CraftingMaterialComponent } from './components/crafting-material/crafti
 import { ClickSearchDirective } from './directives/click-search.directive';
 import { HoverHighlightDirective } from './directives/hover-highlight.directive';
 import { LoadoutComponent } from './components/loadout/loadout.component';
+import { ItemListComponent } from './components/item-list/item-list.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -82,6 +83,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     ClickSearchDirective,
     HoverHighlightDirective,
     LoadoutComponent,
+    ItemListComponent,
   ],
   imports: [
     HttpClientModule,
