@@ -7,6 +7,7 @@ import { WeaponTileComponent } from '../components/tiles/weapon-tile/weapon-tile
 import { SkillTileComponent } from '../components/tiles/skill-tile/skill-tile.component';
 import { ItemTileComponent } from '../components/tiles/item-tile/item-tile.component';
 import { LoadoutComponent } from '../components/loadout/loadout.component';
+import { Weapon } from '../classes/weapon.class';
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +29,10 @@ export class TileFactoryService {
   }
 
   public addTile(result: any) {
-    console.info("addResult", result);
     let newResult: TileItem = {
       component: this.componentTypes[result.category],
       data: result.data,
     }
-    console.info("new Result", newResult);
 
     this.resultsSubject.getValue().push(newResult);
   }
@@ -42,9 +41,14 @@ export class TileFactoryService {
     this.resultsSubject.getValue().splice(index, 1);
   }
 
-  public getTileItem(category: string){
+  public getTileItem(category: string, subtype?: string){
     let temp = [];
     this.resultsSubject.getValue().filter((result) => {
+      if (subtype) 
+        return result.component == (this.componentTypes[category])
+          && result.data.type 
+          && result.data.type == subtype;
+
       return result.component == (this.componentTypes[category])
        
     }).forEach(element => {

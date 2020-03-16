@@ -1,8 +1,8 @@
 import {Armor as IArmor} from 'src/app/models/armor'
-export class Armor implements IArmor
+import { EquipmentItem } from './equipmentItem.class';
+export class Armor extends EquipmentItem implements IArmor
 {
-    id: number;    slug: string;
-    name: string;
+    slug: string;
     type: string;
     rank: string;
     rarity: number;
@@ -14,4 +14,20 @@ export class Armor implements IArmor
     assets: import("../models/armor").ArmorAssets;
     crafting: import("../models/armor").ArmorCraftingInfo;
     attributes: import("../models/armor").ArmorAttributes;
+
+    constructor(private armor: IArmor) { 
+        super(); 
+
+        this.id = armor.id;
+        this.name = armor.name;
+        this.type = armor.type;
+    }
+
+    getStats() {
+        return this.armor.defense;
+    }
+
+    getName() {
+        return this.name + "(Armor)";
+    }
 }

@@ -19,18 +19,18 @@ export class LoadoutComponent implements OnInit {
   ngOnInit() {}
 
   showList(type: string, subtype?: string) {
-    console.log("type", this.types[type]);
 
-    this.tileFactory.getTileItem(type).forEach(element => {
-      let name = EquipmentLoadout.Types[type];
-      this.loadout.setItem<(typeof name)>(element);
+    let items = this.tileFactory.getTileItem(type, subtype);
+    
+    if (items.length === 0)
+      return;
+      
+    this.loadout.setItem(items[0], type);
+    
+    // items.forEach(element => {
+    //   this.loadout.setItem(element, type);
+    // });
 
-      console.log("type", this.types[type]);
-    });
+    this.loadout.printLoadout();
   }
-
-  types = {
-    armor: Armor,
-    weapons: Weapon
-  };
 }
