@@ -1,11 +1,16 @@
-<div class="equipment">
-    <div class="equipment-slot" (click)="showList('weapons')">WEAPON SLOT</div>
-    <div class="equipment-slot" (click)="showList('armor', 'head')">ARMOR (head) SLOT</div>
-    <div class="equipment-slot" (click)="showList('armor', 'chest')">ARMOR (chest) SLOT</div>
-    <div class="equipment-slot" (click)="showList('armor', 'legs')">ARMOR (legs) SLOT</div>
-    <div class="equipment-slot" (click)="showList('armor', 'waist')">ARMOR (waist) SLOT</div>
-    <div class="equipment-slot" (click)="showList('armor', 'gloves')">ARMOR (gloves) SLOT</div>
-    <div class="equipment-slot" (click)="showList('charms')">CHARM SLOT</div>
-    <app-item-list [itemList]="items" (selectedItem)="setSlot($event)">
-    </app-item-list>
-</div>
+<app-equipment class="equipment-slot" (click)="showList('weapons')" [slotName]="'Weapon Slot'" [equipmentName]="loadout.Weapon ? loadout.Weapon.getName() : ''">
+</app-equipment>
+<app-equipment class="equipment-slot" (click)="showList('armor', 'head')" [slotName]="'Armor (head) Slot'" [equipmentName]="loadout.Head ? loadout.Head.getName() : ''">
+</app-equipment>
+<app-equipment class="equipment-slot" (click)="showList('armor', 'chest')" [slotName]="'Armor (chest) Slot'" [equipmentName]="loadout.Chest ? loadout.Chest.getName() : ''">
+</app-equipment>
+<app-equipment class="equipment-slot" (click)="showList('armor', 'legs')" [slotName]="'Armor (legs) Slot'" [equipmentName]="loadout.Legs ? loadout.Legs.getName() : ''">
+</app-equipment>
+<app-equipment class="equipment-slot" (click)="showList('armor', 'waist')" [slotName]="'Armor (waist) Slot'" [equipmentName]="loadout.Waist ? loadout.Waist.getName() : ''">
+</app-equipment>
+<app-equipment class="equipment-slot" (click)="showList('armor', 'gloves')" [slotName]="'Armor (gloves) Slot'" [equipmentName]="loadout.Gloves ? loadout.Gloves.getName() : ''">
+</app-equipment>
+<app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm Slot'" [equipmentName]="" [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
+</app-equipment>
+<app-item-list [itemList]="items" (selectedItem)="setSlot($event)" *ngIf="active">
+</app-item-list>

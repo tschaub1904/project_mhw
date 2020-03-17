@@ -1,5 +1,6 @@
 import { Armor } from "./armor.class";
 import { Weapon } from "./weapon.class";
+import { Charm } from "./charm.class";
 import { EquipmentItem } from './equipmentItem.class';
 import { TypeScriptEmitter } from '@angular/compiler';
 
@@ -10,6 +11,7 @@ export class EquipmentLoadout {
   public Waist: EquipmentItem;
   public Legs: EquipmentItem;
   public Gloves: EquipmentItem;
+  public Charm: EquipmentItem;
 
   calcStats() {
     //DO STUFF
@@ -17,7 +19,8 @@ export class EquipmentLoadout {
 
   public static Types = {
     armor: Armor,
-    weapons: Weapon
+    weapons: Weapon,
+    charms: Charm
   };
 
   setItem(item: any, type: string) {
@@ -35,7 +38,8 @@ export class EquipmentLoadout {
         else if (temp.type == 'legs') this.Legs = temp;
         else if (temp.type == 'gloves') this.Gloves = temp;
         break;
-      case "charm":
+      case "charms":
+        this.Charm = new Charm(item);
         break;
       default:
         console.warn("unknown type ", type);
@@ -45,6 +49,5 @@ export class EquipmentLoadout {
 
   printLoadout() {
     console.log("printLoadout", this);
-    // console.log(this.Weapon.getName());
   }
 }

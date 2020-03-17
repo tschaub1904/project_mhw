@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ContentChildren, QueryList, ContentChild, ElementRef } from "@angular/core";
 import { TileFactoryService } from "src/app/services/tileFactory.service";
 import { EquipmentLoadout } from "src/app/classes/equipmentLoadout.class";
 
@@ -11,6 +11,7 @@ export class LoadoutComponent implements OnInit {
 	loadout: EquipmentLoadout = new EquipmentLoadout();
 	items: any[] = [];
 	type: string;
+	active: boolean = false;
 
 	constructor(private tileFactory: TileFactoryService) { }
 
@@ -24,18 +25,15 @@ export class LoadoutComponent implements OnInit {
 		if (this.items.length === 0)
 			return;
 
-		this.loadout.setItem(this.items[0], type);
-
-		// items.forEach(element => {
-		//   this.loadout.setItem(element, type);
-		// });
-
 		this.loadout.printLoadout();
+		this.active = true;
 	}
 
 	setSlot(event: any){
-		console.log("setSLot ",event)
+		console.log("setSLot ",event, this.type)
 		this.loadout.setItem(event, this.type);
 		this.loadout.printLoadout();
-	}
+
+		this.active = false;
+  }
 }

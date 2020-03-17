@@ -37,6 +37,7 @@ import { ClickSearchDirective } from './directives/click-search.directive';
 import { HoverHighlightDirective } from './directives/hover-highlight.directive';
 import { LoadoutComponent } from './components/loadout/loadout.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
+import { EquipmentComponent } from './components/details/equipment/equipment.component';
 
 const routes: Routes = [{path: '', component: CharmsListComponent}]
 
@@ -84,6 +85,7 @@ const routes: Routes = [{path: '', component: CharmsListComponent}]
     HoverHighlightDirective,
     LoadoutComponent,
     ItemListComponent,
+    EquipmentComponent,
   ],
   imports: [
     HttpClientModule,

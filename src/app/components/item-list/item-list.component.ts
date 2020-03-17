@@ -17,5 +17,4 @@ export class ItemListComponent implements OnInit {
   onClick(item: any){
     this.selectedItem.emit(item);
   }
-
 }
