@@ -10,7 +10,7 @@
 </app-equipment>
 <app-equipment class="equipment-slot" (click)="showList('armor', 'gloves')" [slotName]="'Armor (gloves) Slot'" [equipmentName]="loadout.Gloves ? loadout.Gloves.getName() : ''">
 </app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm Slot'" [equipmentName]="" [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
+<app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm Slot'" [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
 </app-equipment>
 <app-item-list [itemList]="items" (selectedItem)="setSlot($event)" *ngIf="active">
 </app-item-list>
