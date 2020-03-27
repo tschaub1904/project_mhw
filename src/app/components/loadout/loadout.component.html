@@ -1,16 +1,27 @@
-<app-equipment class="equipment-slot" (click)="showList('weapons')" [slotName]="'Weapon Slot'" [equipmentName]="loadout.Weapon ? loadout.Weapon.getName() : ''">
-</app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('armor', 'head')" [slotName]="'Armor (head) Slot'" [equipmentName]="loadout.Head ? loadout.Head.getName() : ''">
-</app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('armor', 'chest')" [slotName]="'Armor (chest) Slot'" [equipmentName]="loadout.Chest ? loadout.Chest.getName() : ''">
-</app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('armor', 'legs')" [slotName]="'Armor (legs) Slot'" [equipmentName]="loadout.Legs ? loadout.Legs.getName() : ''">
-</app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('armor', 'waist')" [slotName]="'Armor (waist) Slot'" [equipmentName]="loadout.Waist ? loadout.Waist.getName() : ''">
-</app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('armor', 'gloves')" [slotName]="'Armor (gloves) Slot'" [equipmentName]="loadout.Gloves ? loadout.Gloves.getName() : ''">
-</app-equipment>
-<app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm Slot'" [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
-</app-equipment>
-<app-item-list [itemList]="items" (selectedItem)="setSlot($event)" *ngIf="active">
-</app-item-list>
+<app-tabs>
+    <app-tab [tabTitle]="'Loadout'">
+        <app-equipment class="equipment-slot" (click)="showList('weapons')" [slotName]="'Weapon'" [equipmentName]="loadout.Weapon ? loadout.Weapon.getName() : ''">
+        </app-equipment>
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'head')" [slotName]="'Head'" [equipmentName]="loadout.Head ? loadout.Head.getName() : ''">
+        </app-equipment>
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'chest')" [slotName]="'Chest'" [equipmentName]="loadout.Chest ? loadout.Chest.getName() : ''">
+        </app-equipment>
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'legs')" [slotName]="'Legs'" [equipmentName]="loadout.Legs ? loadout.Legs.getName() : ''">
+        </app-equipment>
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'waist')" [slotName]="'Waist'" [equipmentName]="loadout.Waist ? loadout.Waist.getName() : ''">
+        </app-equipment>
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'gloves')" [slotName]="'Gloves'" [equipmentName]="loadout.Gloves ? loadout.Gloves.getName() : ''">
+        </app-equipment>
+        <app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm'" [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
+        </app-equipment>      
+    </app-tab>
+    <app-tab [tabTitle]="'Stats'">
+    </app-tab>
+    <app-tab [tabTitle]="'Skills'">
+
+    </app-tab>
+</app-tabs>
+<div #picker id="itempicker">
+    <app-item-list [itemList]="items" (selectedItem)="setSlot($event)" *ngIf="active">
+    </app-item-list>
+</div>  

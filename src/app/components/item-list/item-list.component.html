@@ -1,5 +1,5 @@
 <ul>
-    <li *ngFor="let item of itemList" (click)="onClick(item)">
+    <li appHoverHighlight class="small" *ngFor="let item of itemList" (click)="onClick(item)">
         {{item.name}}
     </li>
 </ul>

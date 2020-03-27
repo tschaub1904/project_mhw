@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   constructor(private tileFactory: TileFactoryService, private to: TileOrganizer) { }
 
   ngOnInit() {
+    this.openLoadoutTile();
   }
 
   openLoadoutTile() {
