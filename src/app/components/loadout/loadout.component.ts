@@ -37,17 +37,16 @@ export class LoadoutComponent implements OnInit, AfterViewInit, OnDestroy {
 		console.log("setSLot ", event, this.type)
 		this.loadout.setItem(event, this.type);
 		this.loadout.printLoadout();
-
+		this.loadout.calcStats();
 		this.active = false;
 	}
 
 	@HostListener('click', ["$event"])
 	mouseClicked(e: MouseEvent) {
+
 		let { x, y } = e;
-		console.log(e);
 		this.picker.nativeElement.style.left = x + "px";
 		this.picker.nativeElement.style.top = y + "px";
-
 	}
 
 }

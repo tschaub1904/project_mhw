@@ -1,21 +1,40 @@
 <app-tabs>
     <app-tab [tabTitle]="'Loadout'">
-        <app-equipment class="equipment-slot" (click)="showList('weapons')" [slotName]="'Weapon'" [equipmentName]="loadout.Weapon ? loadout.Weapon.getName() : ''">
+        <app-equipment class="equipment-slot" (click)="showList('weapons')" [slotName]="'Weapon'"
+            [equipmentName]="loadout.Weapon ? loadout.Weapon.getName() : ''">
         </app-equipment>
-        <app-equipment class="equipment-slot" (click)="showList('armor', 'head')" [slotName]="'Head'" [equipmentName]="loadout.Head ? loadout.Head.getName() : ''">
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'head')" [slotName]="'Head'"
+            [equipmentName]="loadout.Head ? loadout.Head.getName() : ''">
         </app-equipment>
-        <app-equipment class="equipment-slot" (click)="showList('armor', 'chest')" [slotName]="'Chest'" [equipmentName]="loadout.Chest ? loadout.Chest.getName() : ''">
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'chest')" [slotName]="'Chest'"
+            [equipmentName]="loadout.Chest ? loadout.Chest.getName() : ''">
         </app-equipment>
-        <app-equipment class="equipment-slot" (click)="showList('armor', 'legs')" [slotName]="'Legs'" [equipmentName]="loadout.Legs ? loadout.Legs.getName() : ''">
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'legs')" [slotName]="'Legs'"
+            [equipmentName]="loadout.Legs ? loadout.Legs.getName() : ''">
         </app-equipment>
-        <app-equipment class="equipment-slot" (click)="showList('armor', 'waist')" [slotName]="'Waist'" [equipmentName]="loadout.Waist ? loadout.Waist.getName() : ''">
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'waist')" [slotName]="'Waist'"
+            [equipmentName]="loadout.Waist ? loadout.Waist.getName() : ''">
         </app-equipment>
-        <app-equipment class="equipment-slot" (click)="showList('armor', 'gloves')" [slotName]="'Gloves'" [equipmentName]="loadout.Gloves ? loadout.Gloves.getName() : ''">
+        <app-equipment class="equipment-slot" (click)="showList('armor', 'gloves')" [slotName]="'Gloves'"
+            [equipmentName]="loadout.Gloves ? loadout.Gloves.getName() : ''">
         </app-equipment>
-        <app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm'" [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
-        </app-equipment>      
+        <app-equipment class="equipment-slot" (click)="showList('charms')" [slotName]="'Charm'"
+            [equipmentName]="loadout.Charm ? loadout.Charm.getName() : ''">
+        </app-equipment>
     </app-tab>
     <app-tab [tabTitle]="'Stats'">
+        <app-item-info [label]="'Display Attack'">{{loadout.Stats.damage.display}}</app-item-info>
+        <app-item-info [label]="'Raw Attack'">{{loadout.Stats.damage.raw}}</app-item-info>
+        <app-item-info [label]="'Affinity'">{{loadout.Stats.weaponAttributes.affinity}}%</app-item-info>
+
+        <app-item-info [label]="'Defense Base'">{{loadout.Stats.defense.base}}</app-item-info>
+        <app-item-info [label]="'Defense Max'">{{loadout.Stats.defense.max}}</app-item-info>
+        <app-item-info [label]="'Defense Augmented'">{{loadout.Stats.defense.augmented}}</app-item-info>
+        <app-item-info [label]="'Fire'">{{loadout.Stats.resistance.fire}}</app-item-info>
+        <app-item-info [label]="'Water'">{{loadout.Stats.resistance.water}}</app-item-info>
+        <app-item-info [label]="'Thunder'">{{loadout.Stats.resistance.thunder}}</app-item-info>
+        <app-item-info [label]="'Ice'">{{loadout.Stats.resistance.ice}}</app-item-info>
+        <app-item-info [label]="'Dragon'">{{loadout.Stats.resistance.dragon}}</app-item-info>
     </app-tab>
     <app-tab [tabTitle]="'Skills'">
 
@@ -24,4 +43,4 @@
 <div #picker id="itempicker">
     <app-item-list [itemList]="items" (selectedItem)="setSlot($event)" *ngIf="active">
     </app-item-list>
-</div>  
+</div>

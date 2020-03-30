@@ -2,6 +2,7 @@ import { Charm as ICharm } from 'src/app/models/charm'
 import { EquipmentItem } from './equipmentItem.class';
 
 export class Charm extends EquipmentItem implements ICharm {
+
 	discriminator: "charm";
 	slug: string;
 	ranks: import("../models/charm").CharmRank[];
@@ -21,6 +22,10 @@ export class Charm extends EquipmentItem implements ICharm {
 	}
 
 	getStats() {
+		throw new Error("Method not implemented.");
+	}
+	
+	getSkills() {
 		throw new Error("Method not implemented.");
 	}
 }

@@ -1,7 +1,11 @@
 import { Armor as IArmor } from 'src/app/models/armor'
 import { EquipmentItem } from './equipmentItem.class';
+import { Stats } from './stats.class';
+
+
 export class Armor extends EquipmentItem implements IArmor
 {
+
     slug: string;
     rank: string;
     type: string;
@@ -33,7 +37,14 @@ export class Armor extends EquipmentItem implements IArmor
     }
 
     getStats() {
-        return this.armor.defense;
+        let stats: Stats = new Stats();
+        stats.defense = this.defense;
+        stats.resistance = this.resistances;
+        return stats;
+    }
+
+    getSkills() {
+        return this.skills;
     }
 
     getName() {

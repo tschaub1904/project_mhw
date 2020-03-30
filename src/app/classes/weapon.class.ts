@@ -1,8 +1,10 @@
 import { Weapon as IWeapon } from '../models/weapon';
-import { Stats } from '../interfaces/stats.interface';
+import { Stats } from './stats.class';
 import { EquipmentItem } from './equipmentItem.class';
 
+
 export class Weapon extends EquipmentItem implements IWeapon {
+
     slug: string;
     type: string;
     rarity: number;
@@ -14,7 +16,7 @@ export class Weapon extends EquipmentItem implements IWeapon {
     durability: import("../models/stats/weaponStats").WeaponSharpness[];
     elderseal: string;
     damageType: string;
-    attribute: import("../models/stats/weaponStats").WeaponAttributes;
+    attributes: import("../models/stats/weaponStats").WeaponAttributes;
 
     constructor(weapon: IWeapon) {
         super();
@@ -31,9 +33,9 @@ export class Weapon extends EquipmentItem implements IWeapon {
         this.durability = weapon.durability;
         this.elderseal = weapon.elderseal;
         this.damageType = weapon.damageType;
-        this.attribute = weapon.attribute;
+        this.attributes = weapon.attributes;
 
-        console.log(this);
+        console.log(weapon);
     }
     
     getName() {
@@ -41,6 +43,16 @@ export class Weapon extends EquipmentItem implements IWeapon {
     }
     
     getStats() {
+        let stats: Stats = new Stats();
+        stats.damage = this.attack;
+        stats.element = this.elements;
+        console.log("weapon", this)
+        if(this.attributes) stats.weaponAttributes = this.attributes;
+
+        return stats;
+    }
+    
+    getSkills() {
         throw new Error("Method not implemented.");
     }
 }
